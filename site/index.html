@@ -11,7 +11,8 @@
 <meta property="og:url" content="https://sentysurf.com/">
 <meta name="theme-color" content="#070c18">
 <link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style.css?v=5">
+<link rel="preload" as="image" href="/img/hero-1400.webp" imagesrcset="/img/hero-1400.webp 1400w, /img/hero-2400.webp 2400w" imagesizes="100vw">
+<link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
 <header class="nav">
@@ -28,6 +29,10 @@
 </header>
 
 <section class="hero">
+  <picture class="hero-bg" aria-hidden="true">
+    <source type="image/webp" srcset="/img/hero-1400.webp 1400w, /img/hero-2400.webp 2400w" sizes="100vw">
+    <img src="/img/hero-1400.jpg" srcset="/img/hero-1400.jpg 1400w, /img/hero-2400.jpg 2400w" sizes="100vw" alt="" fetchpriority="high">
+  </picture>
   <div class="wrap">
     <div>
       <span class="eyebrow">Endpoint monitoring for Windows 10 &amp; 11</span>
@@ -43,6 +48,11 @@
       </div>
       <p class="fine" data-dl-meta>Free · No account required · Checksum-verified updates</p>
     </div>
+  </div>
+</section>
+
+<section class="preview">
+  <div class="wrap split">
     <div class="mock" aria-hidden="true">
       <div class="mock-bar"><i></i><i></i><i></i></div>
       <div class="mock-body">
@@ -66,6 +76,43 @@
             <span>Zoom updated to 6.3.0</span>
             <span class="pill" style="background:#0f3a2e;color:var(--ok)">DONE</span></div>
         </div>
+      </div>
+    </div>
+  
+    <div>
+      <span class="eyebrow">One dashboard</span>
+      <h2 class="h2">Every finding ranked, explained and fixable</h2>
+      <p class="sub">Findings are scored by severity and grouped by what they affect. Each one says what was found,
+        why it matters and how to fix it, with a one-click route to the right Windows setting.</p>
+      <ul class="checks">
+        <li>Live monitoring every 5 seconds, full checks every minute</li>
+        <li>Posture score history with 7, 30 and 90-day trends</li>
+        <li>Alerts as Windows notifications, with a full audit log</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="spots">
+  <div class="wrap">
+    <div class="spot">
+      <picture><source type="image/webp" srcset="/img/remote-access.webp"><img src="/img/remote-access.jpg" alt="A connection beam stopped by a shield before it reaches a laptop" loading="lazy" width="900" height="672"></picture>
+      <div>
+        <span class="eyebrow">Remote-access detection</span>
+        <h2 class="h2">Stops the tech-support scam at the first connection</h2>
+        <p class="sub">Scammers talk victims into installing AnyDesk, TeamViewer or Quick Assist, then take over the
+          screen. SentySurf flags the tool the moment it launches and raises a high-severity alert when an inbound
+          session starts, on your PC or any PC in your family.</p>
+      </div>
+    </div>
+    <div class="spot rev">
+      <picture><source type="image/webp" srcset="/img/baseline.webp"><img src="/img/baseline.jpg" alt="Stacked glass layers with one block highlighted as changed" loading="lazy" width="900" height="672"></picture>
+      <div>
+        <span class="eyebrow">Baseline drift</span>
+        <h2 class="h2">Knows what normal looks like, and what changed</h2>
+        <p class="sub">On install SentySurf records a known-good baseline of startup entries, services, scheduled
+          tasks, listening ports, Defender exclusions, WMI subscriptions and sensitive files. Any deviation is
+          reported with its signature status, so a new unsigned autorun never goes unnoticed.</p>
       </div>
     </div>
   </div>
@@ -126,20 +173,7 @@
         <li>Hardware and OS inventory for every device, exportable to CSV.</li>
       </ul>
     </div>
-    <div class="fam" aria-hidden="true">
-      <div class="card"><span class="pill" style="background:#0f3a2e;color:var(--ok);margin:0">PROTECTED</span>
-        <div class="name">Kelvin</div><div class="meta">Windows 11 Home · live</div>
-        <div class="stats"><div><b style="color:var(--ok)">94</b><small>Score</small></div><div><b>0</b><small>High</small></div><div><b style="color:var(--ok)">On</b><small>Protection</small></div></div></div>
-      <div class="card"><span class="pill" style="background:#3a1a22;color:var(--high);margin:0">NEEDS ATTENTION</span>
-        <div class="name">Mum-Laptop</div><div class="meta">Windows 11 Home · 2 min ago</div>
-        <div class="stats"><div><b style="color:var(--med)">64</b><small>Score</small></div><div><b style="color:var(--high)">1</b><small>High</small></div><div><b style="color:var(--ok)">On</b><small>Protection</small></div></div></div>
-      <div class="card"><span class="pill" style="background:#0f3a2e;color:var(--ok);margin:0">PROTECTED</span>
-        <div class="name">Grandma-PC</div><div class="meta">Windows 10 Home · 12 min ago</div>
-        <div class="stats"><div><b style="color:var(--ok)">91</b><small>Score</small></div><div><b>0</b><small>High</small></div><div><b style="color:var(--ok)">On</b><small>Protection</small></div></div></div>
-      <div class="card"><span class="pill" style="background:#3a2e10;color:var(--med);margin:0">ACTION RECOMMENDED</span>
-        <div class="name">Kids-PC</div><div class="meta">Windows 11 Home · 5 min ago</div>
-        <div class="stats"><div><b style="color:var(--med)">78</b><small>Score</small></div><div><b>0</b><small>High</small></div><div><b style="color:var(--ok)">On</b><small>Protection</small></div></div></div>
-    </div>
+    <picture class="fam-art"><source type="image/webp" srcset="/img/family.webp"><img src="/img/family.jpg" alt="Connected homes reporting to one central dashboard" loading="lazy" width="900" height="672"></picture>
   </div>
 </section>
 

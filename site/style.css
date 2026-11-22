@@ -180,3 +180,28 @@ footer a { color: var(--muted); }
   .card p { font-size: 16px; }
   .m-title { font-size: 20px; }
 }
+
+/* ---- imagery (Runway-generated artwork) ---- */
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; display: block; }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(7, 12, 24, .97) 0%, rgba(7, 12, 24, .88) 32%, rgba(7, 12, 24, .35) 62%, rgba(7, 12, 24, .1) 100%),
+              linear-gradient(0deg, var(--bg) 0%, rgba(7, 12, 24, 0) 22%); }
+.hero::before { z-index: 1; }
+.hero > .wrap { position: relative; z-index: 2; }
+.hero .wrap { grid-template-columns: minmax(0, 760px) 1fr; }
+.preview { padding-top: clamp(40px, 6vh, 80px); }
+.h2 { font-size: clamp(28px, 3vw, 46px); line-height: 1.15; margin: 10px 0 14px; letter-spacing: -.01em; }
+.sub { color: var(--muted); font-size: clamp(16px, 1.1vw, 18px); margin: 0; max-width: 640px; }
+.spots .wrap { display: grid; gap: clamp(56px, 8vh, 110px); }
+.spot { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(36px, 5vw, 96px); align-items: center; }
+.spot.rev > picture { order: 2; }
+.spot picture, .fam-art { display: block; border-radius: 22px; overflow: hidden; border: 1px solid var(--border);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .8), 0 0 0 1px rgba(34, 211, 238, .05); background: var(--panel); }
+.spot img, .fam-art img { width: 100%; height: auto; display: block; }
+@media (max-width: 900px) {
+  .spot { grid-template-columns: 1fr; }
+  .spot.rev > picture { order: 0; }
+  .hero::after { background: linear-gradient(180deg, rgba(7, 12, 24, .55) 0%, rgba(7, 12, 24, .92) 55%, var(--bg) 100%); }
+  .hero-bg img { object-position: 75% 30%; }
+}
