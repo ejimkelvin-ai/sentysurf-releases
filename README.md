@@ -58,7 +58,7 @@ The hash should match the line for that file in `SHA256SUMS.txt`.
 SentySurf runs entirely on your PC with no account and no tracking. It only goes online to check for
 updates (once a day, from this page), when you use the password check (only part of a one-way
 fingerprint of the password is sent), and during scans to ask Windows' winget tool about app updates.
-Family mode shares an encrypted summary through a folder you choose.
+Family mode shares a short security summary, end-to-end encrypted with your family code, through the ntfy.sh relay (an optional shared folder can be used too).
 
 ---
 © 2026 Kelvin. SentySurf is free for personal use. It complements, but does not replace, antivirus software.
