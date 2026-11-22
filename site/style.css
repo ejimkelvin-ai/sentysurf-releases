@@ -26,6 +26,7 @@ header.nav .wrap { display: flex; align-items: center; gap: 28px; height: 64px; 
 .nav-links { display: flex; gap: 22px; margin-left: auto; align-items: center; }
 .nav-links a { color: var(--muted); font-size: 15px; }
 .nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-links a.btn-primary, .nav-links a.btn-primary:hover { color: #04131a; }
 
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 10px;
@@ -163,4 +164,8 @@ footer a { color: var(--muted); }
   section { padding: 56px 0; }
   .m-tiles { grid-template-columns: repeat(3, 1fr); }
   .nav-links a:not(.btn) { display: none; }
+  .card { padding: 18px; }
+  .card h3 { margin-top: 10px; }
+  .grid { gap: 12px; }
+  .dl-card { padding: 30px 20px; }
 }
