@@ -6,7 +6,9 @@ changes, deletes or ends anything unless you click a button that clearly says so
 
 ## Download
 
-Get the newest version from **[Releases](../../releases/latest)**:
+**[sentysurf.com](https://sentysurf.com)** – the Download button picks the right version for your PC.
+
+Or get the files directly from **[Releases](../../releases/latest)**:
 
 | Your PC | File to download |
 |---|---|
