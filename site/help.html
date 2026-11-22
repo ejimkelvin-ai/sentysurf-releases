@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help – SentySurf</title>
+<meta name="description" content="Installing SentySurf, which download to choose, what to do if Windows blocks it, and setting up Family mode.">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+  <nav class="nav-links"><a href="/#features">Features</a><a href="/privacy">Privacy</a>
+    <a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
+</div></header>
+
+<main class="prose">
+  <h1>Help</h1>
+
+  <h2 id="which">Which download do I need?</h2>
+  <p>The Download button picks the right one for you. If you're downloading for another PC: most PCs (Intel or
+    AMD) need the <a href="/download">standard version</a>; ARM laptops (Snapdragon, many Copilot+ PCs) need the
+    <a href="/download/arm64">ARM version</a>. To check, open <b>Settings → System → About</b> and look at
+    <b>System type</b> – “ARM-based processor” means ARM.</p>
+
+  <h2>Requirements</h2>
+  <ul>
+    <li>Windows 10 (version 1809 or newer) or Windows 11, 64-bit</li>
+    <li>An administrator account to install (every account on the PC is protected afterwards)</li>
+    <li>Not supported: Windows in S mode, 32-bit Windows</li>
+  </ul>
+
+  <h2 id="smartscreen">“Windows protected your PC”</h2>
+  <p>SentySurf isn't code-signed yet, so Windows SmartScreen shows a blue warning for new downloads. Click
+    <b>More info → Run anyway</b>. You can check your download is genuine with its fingerprint (below).</p>
+
+  <h2>“Smart App Control blocked an app”</h2>
+  <p>On PCs with Smart App Control turned on, Windows blocks apps that aren't code-signed and there's no way to
+    allow a single app. SentySurf can't run on these PCs until it's signed. (Smart App Control can be turned off
+    in Windows Security → App &amp; browser control, but it can't always be turned back on, so think carefully.)</p>
+
+  <h2>Nothing happens, or “This app can't run on your PC”</h2>
+  <p>The PC may be in <b>Windows S mode</b>, which only allows Microsoft Store apps, or you may have downloaded
+    the wrong version for its processor – see <a href="#which">Which download do I need?</a></p>
+
+  <h2>My antivirus quarantined it</h2>
+  <p>Some antivirus products wrongly flag new, unsigned apps. Check the file's fingerprint (below), then restore
+    it or add an exception.</p>
+
+  <h2>Check your download</h2>
+  <p>Every release includes <code>SHA256SUMS.txt</code> on the
+    <a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest">release page</a>. In PowerShell,
+    in the folder with the download:</p>
+  <pre>Get-FileHash .\SentySurf-Setup-*.exe</pre>
+  <p>The hash should match the line for that file.</p>
+
+  <h2>Updates</h2>
+  <p>SentySurf checks for updates once a day. Install them from <b>Settings → Updates</b> inside the app.</p>
+
+  <h2 id="family">Adding a family PC</h2>
+  <ol>
+    <li>On your PC: SentySurf → <b>Family</b> → <b>Create family</b>. You get a family code.</li>
+    <li>On their PC: install SentySurf from this website.</li>
+    <li>On their PC: SentySurf → <b>Family</b> → <b>Join a family</b>, type the code, click <b>Join family</b>.</li>
+  </ol>
+  <p>Their PC appears on your Family page within a few minutes. Send the code by text or phone, not in the same
+    email as the download link. Click <b>Refresh</b> on the Family page to ask every PC to check in now.</p>
+
+  <h2>Work or school computers</h2>
+  <p>Your IT department's rules may block installing apps. Ask them first.</p>
+
+  <h2>Still stuck?</h2>
+  <p>Email <a href="mailto:support@sentysurf.com">support@sentysurf.com</a> with what you see (a screenshot
+    helps).</p>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+  <span>© 2026 SentySurf</span>
+  <nav><a href="/help">Help</a><a href="/privacy">Privacy</a><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></nav>
+</div></footer>
+</body>
+</html>

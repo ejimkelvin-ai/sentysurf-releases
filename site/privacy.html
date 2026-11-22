@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy – SentySurf</title>
+<meta name="description" content="How SentySurf treats your privacy: what it reads, what it stores and the little it sends.">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+  <nav class="nav-links"><a href="/#features">Features</a><a href="/help">Help</a>
+    <a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
+</div></header>
+
+<main class="prose">
+  <h1>Privacy</h1>
+  <p>SentySurf runs on your computer. It has no account, no advertising and no tracking. This page explains
+    exactly what it reads, what it keeps and the little it sends over the internet.</p>
+
+  <h2>What SentySurf reads on your PC</h2>
+  <p>Security settings, the list of running programs and their network connections, startup entries,
+    scheduled tasks and services, browser extension lists, and Windows' own records of which apps used your
+    camera or microphone. It never reads your documents, emails, messages or browsing history.</p>
+
+  <h2>What it stores</h2>
+  <p>Its baseline (its record of what “normal” looks like), alert history, settings and scan results, in a
+    folder on your PC that only administrators can open (<code>C:\ProgramData\SentySurf</code>). Nothing is
+    uploaded.</p>
+
+  <h2>What it sends over the internet</h2>
+  <ul>
+    <li><b>Update check</b> – once a day SentySurf asks GitHub whether a newer version exists. It's an
+      ordinary web request; nothing about you or your PC is included.</li>
+    <li><b>Password check</b> (only when you use it) – only the first 5 characters of a one-way fingerprint
+      (SHA-1 hash) of the password go to Have I Been Pwned. The password itself never leaves your PC and is
+      never saved.</li>
+    <li><b>App update check</b> (during scans) – Windows' built-in winget tool contacts Microsoft's app
+      catalogue.</li>
+    <li><b>Family mode</b> (only if you set it up) – see below.</li>
+  </ul>
+
+  <h2>Family mode</h2>
+  <p>About every 20 minutes – and straight away when something important changes – each family PC shares a
+    short security summary: PC name, score, issue counts, protection on/off, important alert titles, and basic
+    facts for the family inventory (Windows version, maker and model, processor type, memory and free disk
+    space).</p>
+  <div class="callout">The summary is <b>encrypted on the PC with your family code</b> before it's sent. The
+    relay only ever sees scrambled text on a channel name that's also derived from your code, so nobody without
+    the code can read it – including us.</div>
+  <p>The summary travels through SentySurf's own relay at <code>relay.sentysurf.com</code> (run on Cloudflare),
+    with the public ntfy.sh service as a backup. Each relay keeps a summary for up to 12 hours and then deletes
+    it. Like any web server, the relays briefly see the internet address a request came from; SentySurf doesn't
+    store or use it. No files, browsing, camera/microphone activity, serial numbers, user names or addresses are
+    ever included.</p>
+
+  <h2>This website</h2>
+  <p>sentysurf.com uses no cookies, analytics or trackers. The download buttons send you to the installer on
+    GitHub, where SentySurf's releases are published.</p>
+
+  <h2>Read-only by design</h2>
+  <p>SentySurf never changes, deletes or ends anything on your computer unless you click a button that clearly
+    says so (such as Update all or Fix it).</p>
+
+  <h2>Questions</h2>
+  <p>Email <a href="mailto:support@sentysurf.com">support@sentysurf.com</a>.</p>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+  <span>© 2026 SentySurf</span>
+  <nav><a href="/help">Help</a><a href="/privacy">Privacy</a><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></nav>
+</div></footer>
+</body>
+</html>
