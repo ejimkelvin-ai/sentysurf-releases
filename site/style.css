@@ -268,3 +268,4 @@ footer .fine { margin-top: 14px; max-width: 320px; line-height: 1.55; }
 @media (max-width: 600px) {
   .bc-item { grid-template-columns: 1fr; gap: 10px; }
 }
+.prose .meta { font: 400 13px/1.6 var(--mono); color: var(--mute); margin: -6px 0 22px; }

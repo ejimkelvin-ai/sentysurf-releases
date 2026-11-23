@@ -7,7 +7,7 @@
 <meta name="description" content="How SentySurf treats your privacy: what it reads, what it stores and the little it sends.">
 <link rel="icon" href="/favicon.ico">
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=11">
+<link rel="stylesheet" href="/style.css?v=12">
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -17,65 +17,122 @@
 
 <main class="prose">
   <h1>Privacy</h1>
-  <p>SentySurf runs locally. There is no account, no advertising and no telemetry. This page sets out what
-    it reads, what it stores and the small amount it sends over the network.</p>
+  <p class="meta">Last updated November 22, 2026 · applies to SentySurf 2.20 and later and to this website</p>
+  <p>SentySurf runs on your computer. It has no account, no advertising, no analytics and no usage tracking, and it
+    doesn't open any network ports for others to connect to. This page lists everything it reads, keeps, changes
+    and sends. The same statement is in the app under <b>Privacy</b>.</p>
 
-  <h2>What SentySurf reads on your PC</h2>
-  <p>Security settings, the list of running programs and their network connections, startup entries,
-    scheduled tasks and services, browser extension lists, and Windows' own records of which apps used your
-    camera or microphone, and the list of devices your PC already sees on your home network. Clipboard Guard looks at copied text only to see whether it's a crypto wallet address; it's never saved or sent. Files and links are inspected only when you choose them on the Safety check page. It never reads your documents, emails, messages or browsing history.</p>
-
-  <h2>What it stores</h2>
-  <p>Its baseline (the known-good snapshot of your system), alert history, settings, scan results and the names you give devices on your network, in a
-    folder on your PC that only administrators can open (<code>C:\ProgramData\SentySurf</code>), or in your user's Library folder on a Mac. Nothing is
-    uploaded.</p>
-
-  <h2>What it sends over the internet</h2>
+  <h2>What SentySurf reads, on your computer only</h2>
   <ul>
-    <li><b>Update check</b>: every 6 hours SentySurf asks sentysurf.com and GitHub whether a newer release exists. It's an
-      ordinary web request; nothing about you or your PC is included.</li>
-    <li><b>Password check</b> (on the Safety check page, only when you use it): only the first 5 characters of a one-way fingerprint
-      (SHA-1 hash) of the password go to Have I Been Pwned. The password itself never leaves your PC and is
-      never saved.</li>
-    <li><b>App update check</b> (during scans): Windows' built-in winget tool contacts Microsoft's app
-      catalogue.</li>
-    <li><b>Network scan</b> (only when you click Scan network): one empty packet to each address on your own home
-      network so devices show up, plus a check of whether your router answers UPnP or Telnet. Nothing leaves your
-      home network.</li>
-    <li><b>Safety check</b>: links are checked on your PC and never opened or sent. Files are scanned by Microsoft
-      Defender on your PC. “Look up on VirusTotal” opens your browser with the file's fingerprint (SHA-256) only,
-      and only when you click it.</li>
-    <li><b>SIEM forwarding</b> (off unless you turn it on): alerts and scan results go only to the destinations you configure, such as your own syslog server or HTTPS collector. Nothing goes to SentySurf.</li>
-    <li><b>Family mode</b> (only if you enable it): see below.</li>
+    <li>Security settings: firewall, antivirus, encryption, updates, sharing and sign-in options.</li>
+    <li>Running programs, their network connections and digital signatures; startup entries, scheduled tasks and
+      services; members of the Administrators group; installed programs and their versions.</li>
+    <li>Windows event logs for failed sign-ins and blocked apps; your Wi-Fi network's name and security type (never
+      its password); the hosts file and network settings such as proxy and DNS.</li>
+    <li>Browser extensions and browser settings (home page, search engine, start-up pages, policies).</li>
+    <li>The system's own record of which apps used the camera or microphone, and the devices your computer
+      already sees on your home network.</li>
+    <li>The ransomware shield reads its own tripwire files and the <em>names</em> (not contents) of files at the
+      top of your main folders, to spot ransom notes.</li>
+    <li>Clipboard Guard checks copied text in memory only to see whether it's a crypto wallet address. If it catches
+      a swap, the alert shows a shortened form of the two addresses; nothing else you copy is saved.</li>
+    <li>Files and links only when you choose them on the Safety check page.</li>
   </ul>
+  <p>SentySurf never reads the contents of your documents, emails or messages, your browsing history, cookies or
+    saved passwords.</p>
+
+  <h2>What it keeps, and where</h2>
+  <p>Its baseline (a snapshot of your system's known-good state), scan results and score history, alert history,
+    settings and allowlist, the home network device list (addresses, hardware addresses and names you give
+    devices), the apps it has seen go online, fingerprints of program files it has already signature-checked, and,
+    if you use them, your family code and SIEM settings.</p>
+  <p>It's all in one folder. With administrator rights (the normal case on Windows) that's
+    <code>C:\ProgramData\SentySurf</code>, which only administrators and the system can open. Without them it's
+    <code>~/Library/Application Support/SentySurf</code> on a Mac and <code>~/.sentysurf</code> on Linux,
+    readable only by your account. A SIEM token is encrypted with Windows DPAPI on Windows. The family code is
+    stored as it is, protected by the folder's permissions. You can clear alert history on the app's Privacy page.
+    On Windows the uninstaller offers to delete the whole folder; on a Mac or Linux, delete it after removing the
+    app.</p>
+
+  <h2>What it sends over the network</h2>
+  <ul>
+    <li><b>SentySurf updates.</b> About every 6 hours while live protection or the window is running, SentySurf
+      asks GitHub (<code>api.github.com</code>), where its releases are published, for the latest version. Like
+      any web request, GitHub sees your IP address and SentySurf's version number; nothing else about you or your
+      computer is sent. With automatic updates on, a new version is downloaded from GitHub over HTTPS and
+      installed only if it matches the release's published SHA-256 checksum.</li>
+    <li><b>Password check</b> (only when you use it). The first 5 characters of the password's SHA-1 hash go to
+      Have I Been Pwned (<code>api.pwnedpasswords.com</code>), which answers with matching hashes padded with decoys.
+      Your password never leaves your computer and is never saved.</li>
+    <li><b>App update list</b> (Windows, during scans, including the daily automatic scan). Windows' built-in
+      winget tool asks Microsoft's app catalogue which of your apps have updates. On macOS and Linux, SentySurf
+      reads the update lists the system already has and makes no connection of its own.</li>
+    <li><b>Home network.</b> <em>Scan network</em>, when you click it, sends one empty packet to each address on
+      your local network so devices show up. <em>Network watch</em> (every 10 minutes after your first scan, unless
+      you turn it off) only reads the devices your computer has already seen. Both ask your router whether UPnP is
+      on, check whether it accepts Telnet or unencrypted web logins, and look up device names using your normal DNS
+      settings (usually answered by your router). Nothing is sent to SentySurf.</li>
+    <li><b>Family mode</b> (only if you set it up). See below.</li>
+    <li><b>SIEM forwarding</b> (off unless you turn it on). Alerts and scan results go only to the destinations
+      you set (Windows Event Log, a local file, your syslog server or your HTTPS collector). Nothing goes to
+      SentySurf.</li>
+    <li><b>Safety check.</b> Links are rated on your computer and are never opened, looked up or sent. Files are
+      checked on your computer: on Windows by Microsoft Defender when it's your active antivirus, on a Mac by
+      Gatekeeper. Defender and Gatekeeper may consult Microsoft or Apple under their own settings. “Look up on
+      VirusTotal” opens your browser with the file's SHA-256 fingerprint, never the file, and only when you click
+      it.</li>
+    <li><b>Links you click</b> (Help, Store page, VirusTotal and similar) open in your browser; those sites' own
+      privacy policies apply.</li>
+  </ul>
+  <p>Nothing else is sent anywhere. Connections use HTTPS with certificate checking, except the local network
+    checks above and syslog over UDP or TCP if you choose those.</p>
 
   <h2>Family mode</h2>
-  <p>Every 20 minutes, and immediately when its status changes, each enrolled PC shares a
-    short security summary: PC name, score, issue counts, protection on/off, important alert titles, and basic
-    facts for the family inventory (Windows version, maker and model, processor type, memory and free disk
-    space).</p>
-  <div class="callout">The summary is <b>encrypted on the PC with your family code</b> before it's sent. The
-    relay only ever sees scrambled text on a channel name that's also derived from your code, so nobody without
-    the code can read it, including us.</div>
-  <p>The summary travels through SentySurf's own relay at <code>relay.sentysurf.com</code> (run on Cloudflare),
-    with the public ntfy.sh service as a backup. Each relay keeps a summary for up to 12 hours and then deletes
-    it. Like any web server, the relays briefly see the internet address a request came from; SentySurf doesn't
-    store or use it. No files, browsing, camera/microphone activity, serial numbers, user names or addresses are
-    ever included.</p>
+  <p>About every 20 minutes, and right away when protection turns on or off or a family member presses Refresh,
+    each enrolled computer shares a short summary: device name, SentySurf version, operating system and version,
+    maker and model, processor type, memory, disk size and free space, when it was last started, score, issue
+    counts, the number of apps with updates, whether protection is on or paused, and the titles of high and medium
+    alerts from the last 14 days that haven't been marked as reviewed.</p>
+  <div class="callout">The summary is <b>encrypted on the computer with a key made from your family code</b>
+    (Fernet: AES-128 with HMAC-SHA256; key derived with PBKDF2, 200,000 rounds) before it's sent, on a channel name
+    that's also derived from the code. Nobody without the code can read it, including us.</div>
+  <p>It goes to both SentySurf's relay at <code>relay.sentysurf.com</code> (run on Cloudflare) and the public
+    <code>ntfy.sh</code> service, so the family keeps working if one is down. The relays see only encrypted data,
+    its size and time, and, like any server, your IP address; SentySurf doesn't log or use it.
+    <code>relay.sentysurf.com</code> deletes messages after 12 hours. ntfy.sh keeps them for a limited time under
+    its own policy (about 12 hours at the time of writing). If you also set a shared folder, the same encrypted
+    summary is written there every 5 minutes. No files, browsing, camera or microphone activity, serial numbers,
+    account names or addresses are included.</p>
+
+  <h2>Changes SentySurf makes to your computer</h2>
+  <p>SentySurf only changes, removes or ends something when you click a button that clearly says so, such as
+    <em>Fix it</em>, <em>Update all</em>, <em>Remove</em> or <em>End it</em>, or when you turn on live
+    protection, which registers SentySurf to start when you sign in. There are two exceptions:</p>
+  <ul>
+    <li><b>Automatic updates</b> (on by default, can be turned off): verified new versions of SentySurf are
+      installed.</li>
+    <li><b>Ransomware shield</b> (on by default, can be turned off): two small hidden tripwire documents are placed
+      in each of your main folders (Documents, Desktop, Pictures, Videos, Music, Downloads and any you add). If it
+      sees files being encrypted, it pauses the app most likely doing it, which you can resume or end in one click.
+      Tripwires never leave your computer. If those folders are synced (for example by OneDrive or iCloud), the
+      tripwires are synced with them like any other file. Turning the shield off removes them, and so does
+      uninstalling on Windows; on a Mac or Linux, turn the shield off before removing the app.</li>
+  </ul>
 
   <h2>Browser check</h2>
-  <p>The <a href="/check">browser check</a> runs entirely in your browser. It reads details any website can read (browser version, language, screen size and so on) and shows them to you; it doesn't send them anywhere, store them or use cookies. The only request it makes is for a small file listing the current browser versions.</p>
+  <p>The <a href="/check">browser check</a> runs entirely in your browser. It reads details any website can read
+    (browser version, language, screen size and so on) and shows them to you; it doesn't send them anywhere, store
+    them or set cookies. The only request it makes is for a small file listing current browser versions.</p>
 
   <h2>This website</h2>
-  <p>sentysurf.com uses no cookies, analytics or trackers. The download buttons send you to the installer on
-    GitHub, where SentySurf's releases are published.</p>
+  <p>sentysurf.com sets no cookies and uses no analytics, advertising or tracking scripts; fonts and images are
+    served from the site itself. The site is delivered through Cloudflare, which processes each request (including
+    your IP address) to deliver and protect the site under its own privacy policy. Download buttons take you to
+    the release files on GitHub, where GitHub's privacy policy applies. If you email support, we use your message
+    only to answer you.</p>
 
-  <h2>Read-only by design</h2>
-  <p>SentySurf never changes, deletes or ends anything on your computer unless you click a button that clearly
-    says so (such as Update all or Fix it). There are two exceptions. It installs its own updates when automatic updates are on. And the
-    ransomware shield (on by default) places two small hidden tripwire documents in each of your main folders and,
-    if it sees files being encrypted, pauses the app doing it until you choose to resume or end it. Tripwires never
-    leave your computer, and turning the shield off removes them.</p>
+  <h2>Changes to this statement</h2>
+  <p>If this statement changes, the new version ships with the app update and is published here with a new date.</p>
 
   <h2>Questions</h2>
   <p>Email <a href="mailto:support@sentysurf.com">support@sentysurf.com</a>.</p>
