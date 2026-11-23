@@ -7,7 +7,7 @@
 <meta name="description" content="Installing SentySurf, which download to choose, what to do if Windows blocks it, and setting up Family mode.">
 <link rel="icon" href="/favicon.ico">
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=9">
+<link rel="stylesheet" href="/style.css?v=11">
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -19,16 +19,24 @@
   <h1>Help</h1>
 
   <h2 id="which">Which download do I need?</h2>
-  <p>The Download button picks the right one for you. If you're downloading for another PC: most PCs (Intel or
-    AMD) need the <a href="/download">standard version</a>; ARM laptops (Snapdragon, many Copilot+ PCs) need the
-    <a href="/download/arm64">ARM version</a>. To check, open <b>Settings → System → About</b> and look at
-    <b>System type</b>. “ARM-based processor” means you need the ARM64 build.</p>
+  <p>The Download button picks the right one for the computer you're on. Downloading for another computer? Use
+    the <a href="/#download">download section</a>:</p>
+  <ul>
+    <li><b>Windows</b>: most PCs (Intel or AMD) need the <a href="/download/x64">standard version</a>. ARM laptops
+      (Snapdragon, many Copilot+ PCs) need the <a href="/download/arm64">ARM64 version</a>: Settings → System → About
+      shows “ARM-based processor” under System type.</li>
+    <li><b>Mac</b>: Apple menu → About This Mac. “Chip: Apple M…” means Apple silicon; “Processor: Intel” means Intel.</li>
+    <li><b>Linux</b>: run <code>uname -m</code>. <code>x86_64</code> needs the x86_64 build, <code>aarch64</code> the ARM64
+      build. Use the .deb on Ubuntu, Debian, Mint and Pop!_OS, and the .tar.gz anywhere else.</li>
+  </ul>
 
   <h2>Requirements</h2>
   <ul>
-    <li>Windows 10 (version 1809 or newer) or Windows 11, 64-bit</li>
-    <li>An administrator account to install (every account on the PC is protected afterwards)</li>
-    <li>Not supported: Windows in S mode, 32-bit Windows</li>
+    <li><b>Windows</b> 10 (version 1809 or newer) or 11, 64-bit, and an administrator account to install. Not
+      supported: S mode, 32-bit Windows.</li>
+    <li><b>macOS</b> 12 Monterey or newer, Apple silicon or Intel.</li>
+    <li><b>Linux</b> with glibc 2.35 or newer (Ubuntu 22.04+, Debian 12+, Fedora 36+ and similar), x86_64 or ARM64,
+      and a graphical desktop for the app window. Live protection uses systemd.</li>
   </ul>
 
   <h2 id="smartscreen">“Windows protected your PC”</h2>
@@ -67,6 +75,18 @@
   </ol>
   <p>Updates: SentySurf tells you when a new version is out, downloads the disk image and checks its checksum. Drag the new copy onto Applications and choose Replace.</p>
 
+  <h2 id="linux">Installing on Linux</h2>
+  <p><b>Ubuntu, Debian, Mint, Pop!_OS</b>: download the .deb for your processor, then run</p>
+  <pre>sudo apt install ./SentySurf-Linux-x86_64.deb</pre>
+  <p>Open SentySurf from your app menu, or run <code>sentysurf</code>. To remove it: <code>sudo apt remove sentysurf</code>.</p>
+  <p><b>Other distributions</b>: extract the .tar.gz somewhere you keep apps and run the included installer, which adds
+    SentySurf to your app menu for your user only:</p>
+  <pre>mkdir -p ~/.local/opt && tar -xzf SentySurf-Linux-x86_64.tar.gz -C ~/.local/opt
+~/.local/opt/SentySurf/install.sh</pre>
+  <p>Turn on <b>Live protection</b> in the app to start watching at every login (it installs a systemd user
+    service, <code>sentysurf-watch.service</code>). Some checks, such as firewall rules, need SentySurf to be run
+    with <code>sudo</code> to see everything; the app tells you when that's the case.</p>
+
   <h2 id="siem">Sending SentySurf to a SIEM</h2>
   <p>Open <b>Settings &gt; SIEM &amp; log forwarding</b> and turn on any destination, then click <b>Send test event</b>:</p>
   <ul>
@@ -82,6 +102,9 @@
 
   <h2 id="ransomware">A game or app can't save files after turning on ransomware protection</h2>
   <p>Controlled Folder Access blocks apps it doesn't know from writing to your protected folders. Open <b>Live protection → Ransomware protection</b>, find the app under <b>Recently blocked</b> and click <b>Allow</b>, or use <b>Allow an app…</b>. Only allow apps you trust.</p>
+
+  <h2 id="locked-extension">An extension won't remove, or keeps coming back</h2>
+  <p>If the browser hides the Remove button or says <b>“Managed by your organization”</b>, a policy or an install key is locking the extension in. Adware often does this on home PCs. In SentySurf, open <b>Browser extensions</b> and click <b>Remove…</b> on that extension (version 2.19.1 or later). SentySurf offers to delete just that lock, keeping a backup, then closes the browser so it picks up the change. Reopen the browser: the extension is usually gone by then. If it's still there, remove it on the page SentySurf opens. If it comes back, something on the PC is re-adding it, so run a full Microsoft Defender scan. On a work PC, ask your IT team first.</p>
 
   <h2 id="network">The Network page shows a device I don't recognise</h2>
   <p>Phones and laptops often use a private (rotating) address, so the same phone can appear as a new device after an update. Check your phones, TVs, consoles and smart-home gadgets first. If it still doesn't match anything, change your Wi-Fi password and review the router's connected-device list. Use <b>Mark as known</b> and <b>Rename</b> to label devices you trust.</p>
@@ -105,7 +128,7 @@
 
 <footer><div class="wrap">
   <div><a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-    <p class="fine">Host monitoring for Windows and macOS. Built to sit next to your antivirus, not replace it.</p>
+    <p class="fine">Security monitoring for Windows, macOS and Linux. Built to sit next to your antivirus, not replace it.</p>
     <p class="fine">© 2026 SentySurf</p></div>
   <div><h4>Product</h4><ul><li><a href="/#product">Dashboard</a></li><li><a href="/#capabilities">Capabilities</a></li><li><a href="/#family">Family</a></li><li><a href="/check">Browser check</a></li><li><a href="/#download">Download</a></li></ul></div>
   <div><h4>Support</h4><ul><li><a href="/help">Help</a></li><li><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></li><li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases">All releases</a></li></ul></div>

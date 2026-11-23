@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SentySurf | Endpoint monitoring for Windows and Mac</title>
-<meta name="description" content="Host-based monitoring for Windows: remote-access detection, posture scoring, baseline drift alerts, patch management and a single view of every PC in your household. Free and read-only.">
-<meta property="og:title" content="SentySurf | Endpoint monitoring for Windows">
-<meta property="og:description" content="Remote-access detection, posture scoring and drift alerts for every Windows PC in your household.">
+<title>SentySurf | Security monitoring for Windows, Mac and Linux</title>
+<meta name="description" content="Free host security monitoring for Windows, macOS and Linux: remote-access detection, posture scoring, vulnerability checks, baseline drift alerts and one view of every computer in your household.">
+<meta property="og:title" content="SentySurf | Security monitoring for Windows, Mac and Linux">
+<meta property="og:description" content="Remote-access detection, posture scoring and drift alerts for every computer in your household.">
 <meta property="og:image" content="https://sentysurf.com/logo-512.png">
 <meta property="og:url" content="https://sentysurf.com/">
 <meta name="theme-color" content="#070c18">
@@ -14,7 +14,7 @@
 <link rel="preload" as="image" type="image/webp" imagesrcset="/img/hero-1600.webp 1600w, /img/hero-2560.webp 2560w, /img/hero-3840.webp 3840w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=9">
+<link rel="stylesheet" href="/style.css?v=11">
 </head>
 <body>
 <header class="nav">
@@ -36,15 +36,16 @@
     <img src="/img/hero-2560.jpg" alt="" width="2560" height="1429" fetchpriority="high" decoding="async">
   </picture>
   <div class="wrap">
-    <p class="label"><b>SentySurf</b> Host monitoring for Windows and macOS</p>
+    <p class="label"><b>SentySurf</b> Endpoint security monitoring</p>
     <h1>Watch what changes. <em>Catch what matters.</em></h1>
-    <p class="lead">SentySurf records what your PC looks like when it's healthy, then tells you, in plain language,
+    <p class="lead">SentySurf records what your computer looks like when it's healthy, then tells you, in plain language,
       the moment that changes: a remote-control session, a new startup entry, a weakened setting, an app that's
       fallen behind on patches. Every finding comes with the fix.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="/download" data-dl><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span data-dl-label>Download for Windows</span></a>
+      <a class="btn btn-primary" href="#download" data-dl><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span>Download free</span></a>
       <a class="btn btn-ghost" href="/check">Check this browser</a>
     </div>
+    <p class="os">Available for <a href="#download" data-os-link="windows">Windows</a><span>/</span><a href="#download" data-os-link="mac">macOS</a><span>/</span><a href="#download" data-os-link="linux">Linux</a></p>
     <dl class="readout" aria-label="Example status">
       <dt>watch</dt><dd class="live">running · checks every 5 s</dd>
       <dt>release</dt><dd data-dl-meta>free · no account · checksum-verified updates</dd>
@@ -58,7 +59,7 @@
       <div><p class="label"><b>01</b> The dashboard</p>
         <h2>One screen tells you whether to worry.</h2></div>
       <p class="sub">Findings are ranked by severity, explained in a sentence and paired with a button that opens
-        the right Windows setting. No jargon, no upsell banners, no account.</p>
+        the right system setting. No jargon, no upsell banners, no account.</p>
     </div>
     <figure class="shot">
       <div class="frame"><picture><source type="image/webp" srcset="/img/app-dashboard-1200.webp 1200w, /img/app-dashboard-1800.webp 1800w, /img/app-dashboard-2600.webp 2600w" sizes="(max-width: 1440px) 92vw, 1300px"><img src="/img/app-dashboard-1800.jpg" alt="SentySurf dashboard showing a high-risk remote access alert, a score of 76 and a 30-day score history" width="1800" height="1125" loading="lazy" decoding="async"></picture></div>
@@ -82,7 +83,7 @@
       <div><p class="label"><b>02</b> Capabilities</p>
         <h2>The coverage antivirus leaves out.</h2></div>
       <p class="sub">Antivirus inspects files. SentySurf watches the system around them: configuration,
-        persistence, remote access, the network and the software you expose. It runs alongside Microsoft Defender.</p>
+        persistence, remote access, the network and the software you expose. It runs alongside your antivirus.</p>
     </div>
     <div class="index">
       <div><h3 class="group">Detect</h3><ol>
@@ -93,7 +94,7 @@
       </ol></div>
       <div><h3 class="group">Harden</h3><ol>
         <li><span class="n">05</span><div><h3>Posture scoring</h3><p>Defender, firewall, BitLocker, UAC, Remote Desktop, automatic sign-in and backups, rescanned daily.</p></div></li>
-        <li><span class="n">06</span><div><h3>Vulnerable software</h3><p>Missing Windows security updates, out-of-support software and exploitable app versions, patched in place through winget.</p></div></li>
+        <li><span class="n">06</span><div><h3>Vulnerable software</h3><p>Missing security updates, unsupported Windows, macOS and Ubuntu releases, and exploitable app versions.</p></div></li>
         <li><span class="n">07</span><div><h3>Ransomware folders</h3><p>Windows' Controlled Folder Access, switched on and managed without digging through Defender.</p></div></li>
         <li><span class="n">08</span><div><h3>Home network</h3><p>Every device on your Wi-Fi, new arrivals flagged, router checked for UPnP and Telnet.</p></div></li>
       </ol></div>
@@ -101,12 +102,12 @@
         <li><span class="n">09</span><div><h3>Links before you click</h3><p>Look-alike domains, foreign look-alike letters, hidden redirects and risky downloads.</p></div></li>
         <li><span class="n">10</span><div><h3>Files before you open</h3><p>Disguised extensions, macros and broken signatures, plus a Microsoft Defender scan.</p></div></li>
         <li><span class="n">11</span><div><h3>Browser extensions</h3><p>A 0–100 risk score per extension, permissions in plain language, policy-forced installs caught.</p></div></li>
-        <li><span class="n">12</span><div><h3>Camera &amp; microphone</h3><p>Each app that turns them on, straight from Windows' own access records.</p></div></li>
+        <li><span class="n">12</span><div><h3>Camera &amp; microphone</h3><p>Each app that turns them on, straight from the system's own access records.</p></div></li>
       </ol></div>
       <div><h3 class="group">Connect</h3><ol>
         <li><span class="n">13</span><div><h3>SIEM forwarding</h3><p>Alerts and scan results to Splunk, Sentinel, Elastic, QRadar or Wazuh: Event Log, syslog with CEF, HTTPS or JSON.</p></div></li>
         <li><span class="n">14</span><div><h3>Family console</h3><p>Every PC you look after on one screen, end-to-end encrypted with a family code.</p></div></li>
-        <li><span class="n">15</span><div><h3>macOS</h3><p>FileVault, Gatekeeper, SIP, XProtect, sharing services and unsupported macOS versions.</p></div></li>
+        <li><span class="n">15</span><div><h3>Mac and Linux</h3><p>FileVault, Gatekeeper, SIP and XProtect on Mac; firewall, disk encryption, SSH and automatic updates on Linux.</p></div></li>
         <li><span class="n">16</span><div><h3>Browser check</h3><p>A free web check of any browser's version, WebRTC exposure, tracker blocking and fingerprint. <a href="/check">Try it</a></p></div></li>
       </ol></div>
     </div>
@@ -172,13 +173,13 @@
 <section class="tint">
   <div class="wrap">
     <div class="head">
-      <div><p class="label"><b>08</b> Alongside Defender</p><h2>Keep Defender. Add visibility.</h2></div>
-      <p class="sub">Microsoft Defender handles malware. SentySurf adds posture, drift and remote-access
-        visibility, and a view across the whole household.</p>
+      <div><p class="label"><b>08</b> Alongside your antivirus</p><h2>Keep your antivirus. Add visibility.</h2></div>
+      <p class="sub">Microsoft Defender, XProtect or your antivirus handle malware. SentySurf adds posture, drift
+        and remote-access visibility, and a view across the whole household.</p>
     </div>
     <div class="table-scroll">
     <table class="compare">
-      <thead><tr><th></th><th class="us">SentySurf</th><th>Windows Security</th><th>Parental controls</th></tr></thead>
+      <thead><tr><th></th><th class="us">SentySurf</th><th>Built-in security</th><th>Parental controls</th></tr></thead>
       <tbody>
       <tr><td>Remote-access session alerts</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
       <tr><td>Posture score with one-click fixes</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no">Partial</td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
@@ -186,7 +187,7 @@
       <tr><td>Link, file and extension checks</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no">Partial</td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
       <tr><td>Home network device list</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
       <tr><td>Multi-PC household view</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td><td class="no">Screen time only</td></tr>
-      <tr><td>Malware blocking and removal</td><td class="us no">Use Defender</td><td class="yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
+      <tr><td>Malware blocking and removal</td><td class="us no">Use your antivirus</td><td class="yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
       <tr><td>Price</td><td class="us yes">Free</td><td class="yes">Free</td><td class="no">Often paid</td></tr>
       </tbody>
     </table>
@@ -195,22 +196,49 @@
 </section>
 
 <section id="download" class="download">
-  <div class="wrap">
-    <div>
+  <div class="wrap dl-wrap">
+    <div class="dl-head">
       <p class="label"><b>09</b> Download</p>
       <h2>Get SentySurf.</h2>
-      <p class="meta" data-dl-version>Free for Windows and macOS</p>
-      <a class="btn btn-primary" href="/download" data-dl><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span data-dl-label>Download for Windows</span></a>
-      <p class="alt-dl" data-dl-alt>Snapdragon or other ARM-based PC? <a href="/download/arm64">Download the ARM64 build</a>.</p>
-      <p class="alt-dl mac-dl">On a Mac? <a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-macOS-AppleSilicon.dmg" data-mac>Download for Apple silicon</a> · <a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-macOS-Intel.dmg">Intel Mac</a></p>
+      <p class="meta" data-dl-version>Free for Windows, macOS and Linux</p>
+      <p class="sub" data-dl-hint>The same app and the same protection on every system.</p>
+    </div>
+    <div class="platforms">
+      <article class="platform" data-os="windows">
+        <h3>Windows</h3>
+        <p class="req">Windows 10 (1809+) and 11</p>
+        <a class="btn btn-primary" href="/download/x64" data-arch="x64"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span>Intel / AMD (x64)</span></a>
+        <ul class="alt">
+          <li><a href="/download/arm64" data-arch="arm64">ARM64 (Snapdragon)</a></li>
+          <li><a href="/help#smartscreen">“Windows protected your PC”?</a></li>
+        </ul>
+      </article>
+      <article class="platform" data-os="mac">
+        <h3>macOS</h3>
+        <p class="req">macOS 12 or later</p>
+        <a class="btn btn-primary" href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-macOS-AppleSilicon.dmg" data-arch="arm64"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span>Apple silicon</span></a>
+        <ul class="alt">
+          <li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-macOS-Intel.dmg" data-arch="x64">Intel Mac</a></li>
+          <li><a href="/help#mac">First launch on a Mac</a></li>
+        </ul>
+      </article>
+      <article class="platform" data-os="linux">
+        <h3>Linux</h3>
+        <p class="req">Ubuntu 22.04+, Debian 12+ and other glibc 2.35+ systems</p>
+        <a class="btn btn-primary" href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-Linux-x86_64.deb" data-arch="x64"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span>.deb (x86_64)</span></a>
+        <ul class="alt">
+          <li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-Linux-arm64.deb" data-arch="arm64">.deb (ARM64)</a></li>
+          <li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-Linux-x86_64.tar.gz">.tar.gz (x86_64)</a> · <a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-Linux-arm64.tar.gz">ARM64</a></li>
+          <li><a href="/help#linux">Installing on Linux</a></li>
+        </ul>
+      </article>
     </div>
     <dl class="specs">
-      <dt>Windows</dt><dd>Windows 10 1809+ and Windows 11, x64 and ARM64. S mode isn't supported.</dd>
-      <dt>Mac</dt><dd>macOS 12 or later, Apple silicon and Intel. <a href="/help#mac">First launch on a Mac</a></dd>
-      <dt>Updates</dt><dd>Checked every 6 hours, verified against a published SHA-256 checksum, installed automatically.</dd>
+      <dt>Updates</dt><dd>Checked every 6 hours and verified against a published SHA-256 checksum before anything is installed.</dd>
       <dt>Account</dt><dd>None. Nothing to sign up for, nothing to sync.</dd>
-      <dt>Privacy</dt><dd>No analytics or tracking. <a href="/privacy">What leaves your PC</a></dd>
-      <dt>Warning?</dt><dd><a href="/help#smartscreen">Seeing “Windows protected your PC”</a></dd>
+      <dt>Privacy</dt><dd>No analytics or tracking. <a href="/privacy">What leaves your computer</a></dd>
+      <dt>Verify</dt><dd><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest">Release page and SHA-256 checksums</a> · <a href="/help#checksum">how to check</a></dd>
+      <dt>Phone?</dt><dd>SentySurf runs on computers. On a phone or tablet, try the <a href="/check">Browser check</a>.</dd>
     </dl>
   </div>
 </section>
@@ -218,7 +246,7 @@
 <footer>
   <div class="wrap">
     <div><a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-      <p class="fine">Host monitoring for Windows and macOS. Built to sit next to your antivirus, not replace it.</p>
+      <p class="fine">Security monitoring for Windows, macOS and Linux. Built to sit next to your antivirus, not replace it.</p>
       <p class="fine">© <span data-year>2026</span> SentySurf</p></div>
     <div><h4>Product</h4><ul><li><a href="#product">Dashboard</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#family">Family</a></li><li><a href="/check">Browser check</a></li><li><a href="#download">Download</a></li></ul></div>
     <div><h4>Support</h4><ul><li><a href="/help">Help</a></li><li><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></li><li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases">All releases</a></li></ul></div>
@@ -229,34 +257,44 @@
 <script>
 (async () => {
   document.querySelectorAll("[data-year]").forEach(e => e.textContent = new Date().getFullYear());
-  let arm = false, windows = /Windows/i.test(navigator.userAgent);
+  const ua = navigator.userAgent;
+  let os = /Windows/i.test(ua) ? "windows" : /Android|iPhone|iPad|iPod/i.test(ua) ? "mobile"
+         : /Macintosh|Mac OS X/i.test(ua) ? ("ontouchend" in document ? "mobile" : "mac")
+         : /Linux|X11|CrOS/i.test(ua) ? "linux" : "";
+  let arch = "";
   try {
     if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
       const v = await navigator.userAgentData.getHighEntropyValues(["architecture", "platform"]);
-      arm = v.architecture === "arm";
-      windows = windows || v.platform === "Windows";
+      if (v.architecture) arch = v.architecture === "arm" ? "arm64" : "x64";
+      if (v.platform === "Windows") os = "windows";
+      else if (v.platform === "macOS") os = "mac";
+      else if (v.platform === "Linux" || v.platform === "Chrome OS") os = os === "mobile" ? os : "linux";
+      else if (v.platform === "Android") os = "mobile";
     }
   } catch (e) {}
-  let info = null;
-  try { info = await (await fetch("/api/latest", {cache: "no-store"})).json(); } catch (e) {}
-  const mb = b => b ? ` · ${(b / 1048576).toFixed(0)} MB` : "";
-  const mac = /Macintosh|Mac OS X/.test(navigator.userAgent) && !("ontouchend" in document);
-  document.querySelectorAll("[data-dl]").forEach(a => a.href = mac ? document.querySelector("[data-mac]").href : arm ? "/download/arm64" : "/download");
-  document.querySelectorAll("[data-dl-label]").forEach(s =>
-    s.textContent = mac ? "Download for Mac" : arm ? "Download for Windows on ARM" : "Download for Windows");
-  if (info && info.version) {
-    const asset = arm ? info.arm64 : info.x64;
-    document.querySelectorAll("[data-dl-version]").forEach(e =>
-      e.textContent = `Version ${info.version}${mb(asset && asset.size)} · released ${new Date(info.published).toLocaleDateString(undefined, {month: "short", day: "numeric", year: "numeric"})}`);
-    document.querySelectorAll("[data-dl-meta]").forEach(e =>
-      e.textContent = `v${info.version} · free · no account · checksum-verified updates`);
+  if (os === "linux" && /aarch64|arm64/i.test(ua)) arch = "arm64";
+  const card = os && document.querySelector(`.platform[data-os="${os}"]`);
+  if (card) {
+    card.classList.add("current");
+    let link = card.querySelector(".btn-primary");
+    // pick the matching architecture where we know it (Windows on ARM, Linux on ARM). Macs default to Apple silicon.
+    if (arch && os !== "mac") { const alt = card.querySelector(`[data-arch="${arch}"]`); if (alt) link = alt; }
+    const main = card.querySelector(".btn-primary");
+    if (link !== main) { const t = main.href; main.href = link.href; link.href = t;
+      const ms = main.querySelector("span"), lt = link.textContent; link.textContent = ms.textContent; ms.textContent = lt; }
+  } else if (os === "mobile") {
+    const hint = document.querySelector("[data-dl-hint]");
+    if (hint) hint.textContent = "SentySurf runs on Windows, Mac and Linux computers. Open this page there to download it.";
   }
-  document.querySelectorAll("[data-dl-alt]").forEach(e => {
-    if (arm) e.innerHTML = 'Not on ARM? <a href="/download/x64">Download the x64 build</a>.';
-    if (mac) e.innerHTML = 'Using Windows? <a href="/download/x64">Download for Windows</a>.';
-    else if (!windows) e.innerHTML = 'Open this page on the computer you want to monitor, or download for ' +
-      '<a href="/download/x64">Windows</a> or <a href="' + document.querySelector("[data-mac]").href + '">Mac</a>.';
-  });
+  try {
+    const info = await (await fetch("/api/latest", {cache: "no-store"})).json();
+    if (info && info.version) {
+      document.querySelectorAll("[data-dl-version]").forEach(e =>
+        e.textContent = `Version ${info.version} · released ${new Date(info.published).toLocaleDateString(undefined, {month: "short", day: "numeric", year: "numeric"})} · free for Windows, macOS and Linux`);
+      document.querySelectorAll("[data-dl-meta]").forEach(e =>
+        e.textContent = `v${info.version} · free · no account · checksum-verified updates`);
+    }
+  } catch (e) {}
 })();
 </script>
 </body>

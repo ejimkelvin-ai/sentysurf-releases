@@ -59,17 +59,21 @@ p { margin: 0; }
 .sub { color: var(--ink2); font-size: 17px; max-width: 560px; }
 
 /* ---------- hero */
-.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); }
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); padding: 0; }
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 72% 45%; }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(90deg, var(--bg) 0%, rgba(8, 13, 24, .94) 30%, rgba(8, 13, 24, .45) 60%, rgba(8, 13, 24, .05) 100%),
               linear-gradient(0deg, var(--bg) 0%, rgba(8, 13, 24, 0) 30%); }
-.hero .wrap { position: relative; z-index: 2; min-height: min(820px, calc(100vh - 60px));
-  display: flex; flex-direction: column; justify-content: center; padding-top: 72px; padding-bottom: 72px; }
+.hero .wrap { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: flex-start;
+  padding-top: clamp(48px, 9vh, 88px); padding-bottom: clamp(64px, 11vh, 112px); }
 .hero h1 { max-width: 13ch; margin: 0 0 26px; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero .lead { margin-bottom: 36px; }
+.hero .os { margin: 18px 0 0; font: 500 13px var(--mono); color: var(--faint); letter-spacing: .02em; }
+.hero .os a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule2); padding-bottom: 1px; }
+.hero .os a:hover { border-color: var(--accent); color: var(--accent); }
+.hero .os span { margin: 0 8px; color: var(--rule2); }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .readout { margin-top: 44px; align-self: flex-start; display: inline-grid; grid-template-columns: auto auto; gap: 6px 28px; padding: 14px 18px;
   border: 1px solid var(--rule2); border-radius: 6px; background: rgba(11, 18, 32, .72);
@@ -145,7 +149,22 @@ table.compare { width: 100%; border-collapse: collapse; font-size: 15.5px; min-w
 .yes svg, .no svg { vertical-align: -3px; }
 
 /* ---------- download */
-.download .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px 88px; align-items: start; }
+.dl-wrap { display: block !important; }
+.dl-head { max-width: 760px; margin-bottom: 40px; }
+.dl-head .sub { margin-top: -8px; }
+.platforms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-bottom: 56px; }
+.platform { border: 1px solid var(--rule2); border-radius: 10px; padding: 26px 26px 22px; background: var(--bg2);
+  display: flex; flex-direction: column; transition: border-color .2s; }
+.platform h3 { font-size: 22px; margin-bottom: 4px; }
+.platform .req { color: var(--mute); font-size: 14.5px; margin-bottom: 22px; min-height: 2.9em; }
+.platform .btn { align-self: flex-start; }
+.platform .alt { list-style: none; margin: 18px 0 0; padding: 14px 0 0; border-top: 1px solid var(--rule); display: grid; gap: 8px; font-size: 14.5px; color: var(--faint); }
+.platform.current { border-color: var(--rule2); }
+.platform.current h3::after { content: "Your system"; margin-left: 10px; font: 500 11px var(--mono); color: var(--accent);
+  letter-spacing: .05em; text-transform: uppercase; vertical-align: 4px; }
+.download .specs { max-width: 920px; }
+@media (max-width: 900px) { .platforms { grid-template-columns: 1fr; } .platform .req { min-height: 0; } }
+
 .download h2 { margin-bottom: 14px; }
 .download .meta { font: 400 14px/1.6 var(--mono); color: var(--mute); margin: 0 0 28px; }
 .specs { margin: 0; display: grid; grid-template-columns: max-content 1fr; border-top: 1px solid var(--rule2); }
@@ -181,7 +200,7 @@ footer .fine { margin-top: 14px; max-width: 320px; line-height: 1.55; }
   .notes { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
-  .head, .row, .row.flip, .download .wrap { grid-template-columns: 1fr; }
+  .head, .row, .row.flip { grid-template-columns: 1fr; }
   .row.flip > :first-child { order: 0; }
   .steps { grid-template-columns: 1fr; gap: 40px; }
   footer .wrap { grid-template-columns: 1fr 1fr; }
