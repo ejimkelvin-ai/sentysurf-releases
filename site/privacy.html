@@ -3,139 +3,215 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy | SentySurf</title>
-<meta name="description" content="How SentySurf treats your privacy: what it reads, what it stores and the little it sends.">
+<title>Privacy statement | SentySurf</title>
+<meta name="description" content="SentySurf privacy statement: what the app processes on your computer, what leaves it, who receives it, how long it is kept and your rights.">
 <link rel="icon" href="/favicon.ico">
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=15">
+<link rel="stylesheet" href="/style.css?v=16">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-  <nav class="nav-links"><a href="/#capabilities" class="hide-sm">Capabilities</a><a href="/check">Browser check</a><a href="/help" class="hide-sm">Help</a><a href="/privacy" class="hide-sm">Privacy</a><a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
+  <nav class="nav-links"><a href="/#capabilities" class="hide-sm">Capabilities</a><a href="/check">Browser check</a><a href="/help" class="hide-sm">Help</a><a href="/privacy" class="hide-sm" aria-current="page">Privacy</a><a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
 </div></header>
 
-<main class="prose">
-  <h1>Privacy</h1>
-  <p class="meta">Last updated November 22, 2026 · applies to SentySurf 2.20 and later and to this website</p>
-  <p>SentySurf runs on your computer. It has no account, no advertising, no analytics and no usage tracking, and it
-    doesn't open any network ports for others to connect to. This page lists everything it reads, keeps, changes
-    and sends. The same statement is in the app under <b>Privacy</b>.</p>
+<main class="prose privacy" id="main">
+  <h1>Privacy statement</h1>
+  <p class="meta">Effective <time datetime="2026-11-23">November 23, 2026</time> · Version 2026-11-23</p>
+  <p class="lede">This statement applies to the SentySurf app (version 2.21.1 and later) on Windows, macOS and Linux, and to the website sentysurf.com. It replaces the statement dated 2026-11-22. The same statement is in the app under <b>Privacy</b>.</p>
 
-  <h2>What SentySurf reads, on your computer only</h2>
-  <ul>
-    <li>Security settings: firewall, antivirus, encryption, updates, sharing and sign-in options.</li>
-    <li>Running programs, their network connections and digital signatures; startup entries, scheduled tasks and
-      services; members of the Administrators group; installed programs and their versions.</li>
-    <li>Windows event logs for failed sign-ins and blocked apps; your Wi-Fi network's name and security type (never
-      its password); the hosts file and network settings such as proxy and DNS.</li>
-    <li>Browser extensions and browser settings (home page, search engine, start-up pages, policies).</li>
-    <li>The system's own record of which apps used the camera or microphone, and the devices your computer
-      already sees on your home network.</li>
-    <li>The ransomware shield reads its own tripwire files and the <em>names</em> (not contents) of files at the
-      top of your main folders, to spot ransom notes.</li>
-    <li>Clipboard Guard checks copied text in memory only to see whether it's a crypto wallet address. If it catches
-      a swap, the alert shows a shortened form of the two addresses; nothing else you copy is saved.</li>
-    <li>Files and links only when you choose them on the Safety check page.</li>
-  </ul>
-  <p>SentySurf never reads the contents of your documents, emails or messages, your browsing history, cookies or
-    saved passwords.</p>
 
-  <h2>What it keeps, and where</h2>
-  <p>Its baseline (a snapshot of your system's known-good state), scan results and score history, alert history,
-    settings and allowlist, the home network device list (addresses, hardware addresses and names you give
-    devices), the apps it has seen go online, fingerprints of program files it has already signature-checked, and,
-    if you use them, your family code and SIEM settings.</p>
-  <p>It's all in one folder. With administrator rights (the normal case on Windows) that's
-    <code>C:\ProgramData\SentySurf</code>, which only administrators and the system can open. Without them it's
-    <code>~/Library/Application Support/SentySurf</code> on a Mac and <code>~/.sentysurf</code> on Linux,
-    readable only by your account. A SIEM token is encrypted with Windows DPAPI on Windows. The family code is
-    stored as it is, protected by the folder's permissions. You can clear alert history on the app's Privacy page.
-    On Windows the uninstaller offers to delete the whole folder; on a Mac or Linux, delete it after removing the
-    app.</p>
 
-  <h2>What it sends over the network</h2>
-  <ul>
-    <li><b>SentySurf updates.</b> About every 6 hours while live protection or the window is running, SentySurf
-      asks GitHub (<code>api.github.com</code>), where its releases are published, for the latest version. Like
-      any web request, GitHub sees your IP address and SentySurf's version number; nothing else about you or your
-      computer is sent. With automatic updates on, a new version is downloaded from GitHub over HTTPS and
-      installed only if it matches the release's published SHA-256 checksum.</li>
-    <li><b>Password check</b> (only when you use it). The first 5 characters of the password's SHA-1 hash go to
-      Have I Been Pwned (<code>api.pwnedpasswords.com</code>), which answers with matching hashes padded with decoys.
-      Your password never leaves your computer and is never saved.</li>
-    <li><b>App update list</b> (Windows, during scans, including the daily automatic scan). Windows' built-in
-      winget tool asks Microsoft's app catalogue which of your apps have updates. On macOS and Linux, SentySurf
-      reads the update lists the system already has and makes no connection of its own.</li>
-    <li><b>Home network.</b> <em>Scan network</em>, when you click it, sends one empty packet to each address on
-      your local network so devices show up. <em>Network watch</em> (every 10 minutes after your first scan, unless
-      you turn it off) only reads the devices your computer has already seen. Both ask your router whether UPnP is
-      on, check whether it accepts Telnet or unencrypted web logins, and look up device names using your normal DNS
-      settings (usually answered by your router). Nothing is sent to SentySurf.</li>
-    <li><b>Family mode</b> (only if you set it up). See below.</li>
-    <li><b>SIEM forwarding</b> (off unless you turn it on). Alerts and scan results go only to the destinations
-      you set (Windows Event Log, a local file, your syslog server or your HTTPS collector). Nothing goes to
-      SentySurf.</li>
-    <li><b>Safety check.</b> Links are rated on your computer and are never opened, looked up or sent. Files are
-      checked on your computer: on Windows by Microsoft Defender when it's your active antivirus, on a Mac by
-      Gatekeeper. Defender and Gatekeeper may consult Microsoft or Apple under their own settings. “Look up on
-      VirusTotal” opens your browser with the file's SHA-256 fingerprint, never the file, and only when you click
-      it.</li>
-    <li><b>Links you click</b> (Help, Store page, VirusTotal and similar) open in your browser; those sites' own
-      privacy policies apply.</li>
-  </ul>
-  <p>Nothing else is sent anywhere. Connections use HTTPS with certificate checking, except the local network
-    checks above and syslog over UDP or TCP if you choose those.</p>
+<section class="glance" aria-labelledby="at-a-glance">
+<h2 id="at-a-glance" class="glance-h">At a glance</h2>
 
-  <h2>Family mode</h2>
-  <p>About every 20 minutes, and right away when protection turns on or off or a family member presses Refresh,
-    each enrolled computer shares a short summary: device name, SentySurf version, operating system and version,
-    maker and model, processor type, memory, disk size and free space, when it was last started, score, issue
-    counts, the number of apps with updates, whether protection is on or paused, and the titles of high and medium
-    alerts from the last 14 days that haven't been marked as reviewed.</p>
-  <div class="callout">The summary is <b>encrypted on the computer with a key made from your family code</b>
-    (Fernet: AES-128 with HMAC-SHA256; key derived with PBKDF2, 200,000 rounds) before it's sent, on a channel name
-    that's also derived from the code. Nobody without the code can read it, including us.</div>
-  <p>It goes to both SentySurf's relay at <code>relay.sentysurf.com</code> (run on Cloudflare) and the public
-    <code>ntfy.sh</code> service, so the family keeps working if one is down. The relays see only encrypted data,
-    its size and time, and, like any server, your IP address; SentySurf doesn't log or use it.
-    <code>relay.sentysurf.com</code> deletes messages after 12 hours. ntfy.sh keeps them for a limited time under
-    its own policy (about 12 hours at the time of writing). If you also set a shared folder, the same encrypted
-    summary is written there every 5 minutes. No files, browsing, camera or microphone activity, serial numbers,
-    account names or addresses are included.</p>
+<ul>
+  <li>SentySurf is a security monitor that runs on your computer. Its checks run on the computer and their results stay there.</li>
+  <li>There is no account, no advertising, no analytics and no usage tracking. We do not sell or share your personal information, and we never see the contents of your files, emails, messages or browsing.</li>
+  <li>A few features use the internet: update checks (GitHub), the password check if you use it (Have I Been Pwned), app update lists on Windows (Microsoft winget) and, if you set it up, family mode. Family summaries are encrypted on your computer before they are sent, so the relays cannot read them.</li>
+  <li>Everything SentySurf keeps is in one folder on your computer that you can open, clear or delete. Optional features can be turned off at any time.</li>
+  <li>Questions and requests: <a href="mailto:support@sentysurf.com">support@sentysurf.com</a>.</li>
+</ul>
+</section>
 
-  <h2>Changes SentySurf makes to your computer</h2>
-  <p>SentySurf only changes, removes or ends something when you click a button that clearly says so, such as
-    <em>Fix it</em>, <em>Update all</em>, <em>Remove</em> or <em>End it</em>, or when you turn on live
-    protection, which registers SentySurf to start when you sign in. There are two exceptions:</p>
-  <ul>
-    <li><b>Automatic updates</b> (on by default, can be turned off): verified new versions of SentySurf are
-      installed.</li>
-    <li><b>Ransomware shield</b> (on by default, can be turned off): two small hidden tripwire documents are placed
-      in each of your main folders (Documents, Desktop, Pictures, Videos, Music, Downloads and any you add). If it
-      sees files being encrypted, it pauses the app most likely doing it, which you can resume or end in one click.
-      Tripwires never leave your computer. If those folders are synced (for example by OneDrive or iCloud), the
-      tripwires are synced with them like any other file. Turning the shield off removes them, and so does
-      uninstalling on Windows; on a Mac or Linux, turn the shield off before removing the app.</li>
-  </ul>
+<nav class="toc" aria-labelledby="toc-h">
+<h2 id="toc-h">Contents</h2>
+<ol>
+  <li><a href="#who-we-are-and-how-to-contact-us">Who we are and how to contact us</a></li>
+  <li><a href="#what-sentysurf-processes-on-your-computer">What SentySurf processes on your computer</a></li>
+  <li><a href="#changes-sentysurf-makes-to-your-computer">Changes SentySurf makes to your computer</a></li>
+  <li><a href="#what-leaves-your-computer">What leaves your computer</a></li>
+  <li><a href="#why-we-process-it-purposes-and-legal-bases">Why we process it: purposes and legal bases</a></li>
+  <li><a href="#service-providers-and-other-recipients">Service providers and other recipients</a></li>
+  <li><a href="#international-transfers">International transfers</a></li>
+  <li><a href="#how-long-information-is-kept">How long information is kept</a></li>
+  <li><a href="#how-we-protect-it">How we protect it</a></li>
+  <li><a href="#your-rights-and-choices">Your rights and choices</a></li>
+  <li><a href="#children">Children</a></li>
+  <li><a href="#the-website-and-browser-check">The website and browser check</a></li>
+  <li><a href="#changes-to-this-statement">Changes to this statement</a></li>
+  <li><a href="#accessibility-and-contact">Accessibility and contact</a></li>
+</ol>
+</nav>
 
-  <h2>Browser check</h2>
-  <p>The <a href="/check">browser check</a> runs entirely in your browser. It reads details any website can read
-    (browser version, language, screen size and so on) and shows them to you; it doesn't send them anywhere, store
-    them or set cookies. The only request it makes is for a small file listing current browser versions.</p>
+<h2 id="who-we-are-and-how-to-contact-us">1. Who we are and how to contact us</h2>
 
-  <h2>This website</h2>
-  <p>sentysurf.com sets no cookies and uses no analytics, advertising or tracking scripts; fonts and images are
-    served from the site itself. The site is delivered through Cloudflare, which processes each request (including
-    your IP address) to deliver and protect the site under its own privacy policy. Download buttons take you to
-    the release files on GitHub, where GitHub's privacy policy applies. If you email support, we use your message
-    only to answer you.</p>
+<p>SentySurf ("SentySurf", "we", "us") is a free security monitor developed and operated from Alberta, Canada. For the personal information described here that reaches us (family-mode relay messages, website requests and emails you send us), SentySurf is the organization responsible for it, called the "controller" under the EU and UK General Data Protection Regulation (GDPR).</p>
 
-  <h2>Changes to this statement</h2>
-  <p>If this statement changes, the new version ships with the app update and is published here with a new date.</p>
+<p>Privacy questions, requests and complaints: <a href="mailto:support@sentysurf.com">support@sentysurf.com</a>. Messages to this address reach the person accountable for privacy at SentySurf.</p>
 
-  <h2>Questions</h2>
-  <p>Email <a href="mailto:support@sentysurf.com">support@sentysurf.com</a>.</p>
+<p><mark class="todo">[To be added: the legal name and postal address of the operator of SentySurf.]</mark> Until they are published here, please make any request by email.</p>
+
+<h2 id="what-sentysurf-processes-on-your-computer">2. What SentySurf processes on your computer</h2>
+
+<p>To check your computer's security, SentySurf reads the information below. It is processed on your computer only. We do not receive it, except for the limited items listed in section 4.</p>
+
+<h3>What it reads</h3>
+
+<ul>
+  <li>Security settings: firewall, antivirus, encryption, updates, sharing and sign-in options.</li>
+  <li>Programs and system: running programs, their network connections and digital signatures; startup entries, scheduled tasks and services; installed programs and their versions; members of the Administrators group.</li>
+  <li>Event logs: Windows event logs for failed sign-ins and blocked apps.</li>
+  <li>Network: your Wi-Fi network's name and security type (never its password); the hosts file and network settings such as proxy and DNS; the devices your computer already sees on your home network.</li>
+  <li>Browsers: extensions and browser settings (home page, search engine, start-up pages, policies).</li>
+  <li>Camera and microphone: the system's own record of which apps used them. SentySurf never records or receives audio or video.</li>
+  <li>Ransomware shield: its own tripwire files, and the names (not the contents) of files at the top of your main folders, to spot ransom notes.</li>
+  <li>Clipboard Guard: copied text, in memory only, to see whether it is a crypto wallet address. If it catches a swap, the alert shows a shortened form of the two addresses (first 6 and last 4 characters). Nothing else you copy is saved.</li>
+  <li>Safety check: files and links, only when you choose them.</li>
+</ul>
+
+<p>SentySurf never reads the contents of your documents, emails or messages, your browsing history, cookies or saved passwords, and it does not collect your location.</p>
+
+<h3>What it keeps, and where</h3>
+
+<p>SentySurf keeps its baseline (a snapshot of your system's known-good state), scan results and score history, alert history, settings and allowlist, the home network device list (addresses, hardware addresses and names you give devices), the apps it has seen go online, fingerprints of program files it has already signature-checked and, if you use them, your family code and SIEM settings.</p>
+
+<p>It is all in one folder. With administrator rights (the normal case on Windows) that is <code>C:\ProgramData\SentySurf</code>, which only administrators and the system can open. Without them it is <code>~/Library/Application Support/SentySurf</code> on a Mac and <code>~/.sentysurf</code> on Linux, readable only by your account. A SIEM token is encrypted with Windows DPAPI on Windows. The family code is stored as it is, protected by the folder's permissions. Reports you choose to save are stored where you save them.</p>
+
+<h2 id="changes-sentysurf-makes-to-your-computer">3. Changes SentySurf makes to your computer</h2>
+
+<p>SentySurf only changes, removes or ends something when you click a button that clearly says so, such as Fix it, Update all, Remove or End it, or when you turn on live protection, which registers SentySurf to start when you sign in. There are two exceptions:</p>
+
+<ul>
+  <li>Automatic updates (on by default; Settings &gt; Install updates automatically): verified new versions of SentySurf are installed.</li>
+  <li>Ransomware shield (on by default; Live protection &gt; Ransomware shield): two small hidden tripwire documents are placed in each of your main folders (Documents, Desktop, Pictures, Videos, Music, Downloads and any you add). If it sees files being encrypted, it pauses the app most likely doing it, which you can resume or end in one click. Tripwires never leave your computer, but if those folders are synced (for example by OneDrive or iCloud), the tripwires are synced with them like any other file. Turning the shield off removes them, and so does uninstalling on Windows. On a Mac or Linux, turn the shield off before removing the app.</li>
+</ul>
+
+<h2 id="what-leaves-your-computer">4. What leaves your computer</h2>
+
+<p>The table lists every connection SentySurf makes. Nothing else is sent. Internet connections use HTTPS with certificate checking; the local network checks, and syslog over UDP or TCP if you choose it, do not.</p>
+
+<div class="data-table" role="region" aria-labelledby="leaves-caption" tabindex="0">
+<table class="data" role="table">
+<caption id="leaves-caption">Every connection SentySurf makes: purpose, data, recipient, timing and retention</caption>
+<thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Purpose</th><th scope="col" role="columnheader">What is sent</th><th scope="col" role="columnheader">Recipient</th><th scope="col" role="columnheader">When</th><th scope="col" role="columnheader">How long it is kept</th></tr></thead>
+<tbody role="rowgroup">
+<tr role="row"><th scope="row" role="rowheader">Update check</th><td role="cell" data-label="What is sent">A request for the latest version, which shows your IP address and SentySurf's version number. Nothing else about you or your computer.</td><td role="cell" data-label="Recipient">GitHub (<code>api.github.com</code>), where SentySurf's releases are published</td><td role="cell" data-label="When">About every 6 hours while live protection or the window is running</td><td role="cell" data-label="How long it is kept">Under GitHub's privacy statement. We receive nothing.</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Automatic update</th><td role="cell" data-label="What is sent">A download request from your IP address. The new version is installed only if it matches the release's published SHA-256 checksum.</td><td role="cell" data-label="Recipient">GitHub</td><td role="cell" data-label="When">When a new version is out and automatic updates are on</td><td role="cell" data-label="How long it is kept">Under GitHub's privacy statement</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Password check</th><td role="cell" data-label="What is sent">The first 5 characters of the password's SHA-1 hash. The password never leaves your computer and is never saved.</td><td role="cell" data-label="Recipient">Have I Been Pwned (<code>api.pwnedpasswords.com</code>), which answers with matching hashes padded with decoys</td><td role="cell" data-label="When">Only when you use it</td><td role="cell" data-label="How long it is kept">Under Have I Been Pwned's policy</td></tr>
+<tr role="row"><th scope="row" role="rowheader">App update list (Windows)</th><td role="cell" data-label="What is sent">The requests Windows' built-in winget tool makes to find which of your apps have updates</td><td role="cell" data-label="Recipient">Microsoft's app catalogue</td><td role="cell" data-label="When">During scans, including the daily automatic scan. On macOS and Linux there is no connection: SentySurf reads the lists the system already has.</td><td role="cell" data-label="How long it is kept">Under Microsoft's privacy statement</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Family mode</th><td role="cell" data-label="What is sent">An encrypted summary of this computer's security (contents below). The relays see only encrypted data, its size and time, and, like any server, your IP address.</td><td role="cell" data-label="Recipient"><code>relay.sentysurf.com</code> (ours, run on Cloudflare) and the public <code>ntfy.sh</code> service, both at once so the family keeps working if one is down</td><td role="cell" data-label="When">Only if you set it up: about every 20 minutes, and right away when protection turns on or off or a family member presses Refresh</td><td role="cell" data-label="How long it is kept"><code>relay.sentysurf.com</code>: purged after 12 hours. <code>ntfy.sh</code>: under its own policy (about 12 hours at the time of writing).</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Home network checks</th><td role="cell" data-label="What is sent">Scan network sends one empty packet to each address on your local network. Network watch only reads the devices your computer has already seen. Both ask your router whether UPnP is on, check whether it accepts Telnet or unencrypted web logins, and look up device names.</td><td role="cell" data-label="Recipient">Devices on your local network, and your normal DNS server (usually your router)</td><td role="cell" data-label="When">Scan network when you click it. Network watch every 10 minutes after your first scan, unless you turn it off.</td><td role="cell" data-label="How long it is kept">Not sent to us</td></tr>
+<tr role="row"><th scope="row" role="rowheader">SIEM forwarding</th><td role="cell" data-label="What is sent">Alerts and scan results</td><td role="cell" data-label="Recipient">Only the destinations you set: Windows Event Log, a local file, your syslog server or your HTTPS collector</td><td role="cell" data-label="When">Only if you turn it on</td><td role="cell" data-label="How long it is kept">Under your control</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Links you open</th><td role="cell" data-label="What is sent">Your browser opens the page. "Look up on VirusTotal" puts the file's SHA-256 fingerprint in the link, never the file.</td><td role="cell" data-label="Recipient">The site you choose (for example Help, a browser's extension store or VirusTotal)</td><td role="cell" data-label="When">Only when you click</td><td role="cell" data-label="How long it is kept">Under that site's own policy</td></tr>
+</tbody></table></div>
+
+<p>Family summaries contain the device name, SentySurf version, operating system and version, maker and model, processor type, memory, disk size and free space, when the computer was last started, score, issue counts, the number of apps with updates, whether protection is on or paused, and the titles of high and medium alerts from the last 14 days that you have not marked as reviewed. They never include files, browsing, camera or microphone activity, serial numbers, account names or addresses. Each summary is encrypted on your computer with a key made from your family code (Fernet: AES-128 with HMAC-SHA256; key derived with PBKDF2, 200,000 rounds) and sent on a channel name derived from the same code. Nobody without the code can read it, including us. If you also set a shared folder, the same encrypted summary is written there every 5 minutes.</p>
+
+<p>Safety check rates links on your computer and never opens, looks up or sends them. Files are checked on your computer: on Windows by Microsoft Defender when it is your active antivirus, on a Mac by Gatekeeper. Defender and Gatekeeper may consult Microsoft or Apple under their own settings.</p>
+
+<h2 id="why-we-process-it-purposes-and-legal-bases">5. Why we process it: purposes and legal bases</h2>
+
+<p>We use personal information only for the purposes below. In Canada we rely on your consent, which you give by installing SentySurf and turning on optional features, and which you can withdraw by turning a feature off or uninstalling. Under the GDPR and UK GDPR, our legal bases are:</p>
+
+<ul>
+  <li>Providing features you ask for (password check, family mode, app update lists, home network checks, SIEM forwarding): necessary to provide the service you requested (Article 6(1)(b)).</li>
+  <li>Keeping SentySurf up to date and secure (update checks and verified automatic updates): our legitimate interest, and yours, in security software that stays current (Article 6(1)(f)). Automatic installs can be turned off in Settings.</li>
+  <li>Delivering the website and the family relay and protecting them from abuse: our legitimate interests (Article 6(1)(f)).</li>
+  <li>Answering emails you send us: to act on your request (Article 6(1)(b)) and our legitimate interest in replying (Article 6(1)(f)).</li>
+  <li>Meeting legal obligations, where they apply (Article 6(1)(c)).</li>
+</ul>
+
+<p>You can object to processing based on legitimate interests by emailing us. We do not use personal information for advertising or profiling, and we make no automated decisions that have legal or similarly significant effects on you. The security score is worked out on your computer, for your information only.</p>
+
+<h2 id="service-providers-and-other-recipients">6. Service providers and other recipients</h2>
+
+<ul>
+  <li>Cloudflare, Inc. (United States): runs sentysurf.com and <code>relay.sentysurf.com</code>, and processes each request, including your IP address, to deliver and protect them. Cloudflare acts as our service provider (processor).</li>
+  <li>GitHub, Inc. (United States): hosts SentySurf's releases, update information and downloads. GitHub is an independent controller under its own privacy statement.</li>
+  <li><code>ntfy.sh</code>: a public notification service used as the second family relay. It receives only encrypted messages and operates under its own policy.</li>
+  <li>Have I Been Pwned: receives the 5-character hash prefix when you use the password check, under its own policy.</li>
+  <li>Microsoft: winget's app catalogue on Windows, and Microsoft Defender if it is your antivirus, under Microsoft's privacy statement. Apple: Gatekeeper on macOS, under Apple's settings and policy.</li>
+  <li>Destinations you choose: your SIEM servers, and websites you open from the app.</li>
+</ul>
+
+<p>We do not sell, rent or trade personal information, and we do not share it for cross-context behavioural advertising. We would disclose information only where the law requires it; the relay holds only encrypted data that we cannot read.</p>
+
+<h2 id="international-transfers">7. International transfers</h2>
+
+<p>SentySurf is operated from Canada. Cloudflare and GitHub are based in the United States and process data in many countries; Cloudflare's network answers from a location near you. Your information may therefore be processed outside your province or country, including in the United States, where it may be accessible to courts and authorities under local law. For information that leaves the European Economic Area, the United Kingdom or Switzerland, we rely on Cloudflare's data processing terms, which include the European Commission's Standard Contractual Clauses. Family summaries are encrypted before they leave your computer, wherever they are stored. You can ask us about our service providers outside Canada at <a href="mailto:support@sentysurf.com">support@sentysurf.com</a>.</p>
+
+<h2 id="how-long-information-is-kept">8. How long information is kept</h2>
+
+<ul>
+  <li>On your computer: until you delete it. Alert history is kept until you clear it (Privacy page &gt; Clear alert history). Score history keeps the last 200 scans. A SIEM log file is kept up to about 20 MB, plus one older copy. Leaving a family (Family &gt; Leave family) deletes this computer's family settings. On Windows the uninstaller offers to delete the whole data folder; on a Mac or Linux, delete the folder in section 2 after removing the app.</li>
+  <li><code>relay.sentysurf.com</code>: encrypted family messages are purged after 12 hours. IP addresses are not stored in the relay's database, and SentySurf does not log or use them.</li>
+  <li><code>ntfy.sh</code>, GitHub, Have I Been Pwned and Microsoft: under their own policies.</li>
+  <li>Emails you send us: as long as needed to help you and handle any follow-up, then deleted.</li>
+</ul>
+
+<h2 id="how-we-protect-it">9. How we protect it</h2>
+
+<ul>
+  <li>Processing stays on your computer wherever possible, and the data folder is readable only by administrators or by your account.</li>
+  <li>Family summaries are end-to-end encrypted. The relay accepts only SentySurf's encrypted message format, limits message size and frequency, and purges messages after 12 hours.</li>
+  <li>Connections use HTTPS with certificate checking. Updates are installed only if they match the published SHA-256 checksum.</li>
+  <li>On Windows, SIEM tokens are encrypted with DPAPI.</li>
+</ul>
+
+<p>No system is perfectly secure. If a breach affecting your personal information occurs, we will notify you and the authorities as the law requires.</p>
+
+<h2 id="your-rights-and-choices">10. Your rights and choices</h2>
+
+<p>Your choices in the app: turn off optional features (family mode, Network watch, SIEM forwarding, automatic updates, ransomware shield), clear alert history, open or delete the data folder, leave a family, or uninstall SentySurf.</p>
+
+<p>Depending on where you live, you may have the right to: know what personal information we hold about you and get a copy; have it corrected; have it deleted; restrict or object to its use; receive it in a portable format; withdraw consent; and not be discriminated against for using these rights. Residents of Quebec, the EU, the UK and California have these rights under their laws; residents of other provinces and states have similar rights in many cases, and we honour requests from everyone.</p>
+
+<p>To make a request, email <a href="mailto:support@sentysurf.com">support@sentysurf.com</a>. It is free. We may ask you to confirm your identity, and you may use an authorized agent. We respond within 30 days, or tell you if we need more time where the law allows. Most information never reaches us: what SentySurf keeps is on your computer, where you can see and delete it yourself, and relay messages are encrypted, cannot be linked to you without your family code and are gone within 12 hours.</p>
+
+<p>You can also complain to a privacy regulator, although we would welcome the chance to help first:</p>
+
+<ul>
+  <li>Canada: Office of the Privacy Commissioner of Canada (<a href="https://www.priv.gc.ca/">priv.gc.ca</a>)</li>
+  <li>Alberta: Office of the Information and Privacy Commissioner of Alberta (<a href="https://oipc.ab.ca/">oipc.ab.ca</a>)</li>
+  <li>Quebec: Commission d'accès à l'information du Québec (<a href="https://www.cai.gouv.qc.ca/">cai.gouv.qc.ca</a>)</li>
+  <li>European Union: the data protection authority in your country</li>
+  <li>United Kingdom: Information Commissioner's Office (<a href="https://ico.org.uk/">ico.org.uk</a>)</li>
+  <li>California: California Privacy Protection Agency (<a href="https://cppa.ca.gov/">cppa.ca.gov</a>)</li>
+</ul>
+
+<p>California notice at collection: in the last 12 months, the only personal information we have collected is identifiers (IP addresses, processed by Cloudflare for the website and relay), encrypted family summaries that we cannot read, and the contents of emails you send us. They come from you and your device, are used only for the purposes in section 5, are kept as described in section 8, and are not sold or shared. We do not use sensitive personal information to infer anything about you.</p>
+
+<h2 id="children">11. Children</h2>
+
+<p>SentySurf is not directed at children under 13, or under the age of digital consent where you live, and we do not knowingly collect personal information from children. A parent or guardian may set up family mode on a computer a child uses. The summary describes the computer's security, not the child, but it does include the device name, so choose a name that does not include a child's full name. If you think a child has sent us personal information, contact us and we will delete it.</p>
+
+<h2 id="the-website-and-browser-check">12. The website and browser check</h2>
+
+<p>sentysurf.com sets no cookies and uses no analytics, advertising or tracking scripts; fonts and images are served from the site itself. The site is delivered through Cloudflare, which processes each request, including your IP address, to deliver and protect the site. Download buttons take you to the release files on GitHub, where GitHub's privacy statement applies.</p>
+
+<p>The browser check (<a href="/check">sentysurf.com/check</a>) runs entirely in your browser. It reads details any website can read (browser version, language, screen size and so on) and shows them to you; it does not send them anywhere, store them or set cookies. The only request it makes is for a small file listing current browser versions.</p>
+
+<h2 id="changes-to-this-statement">13. Changes to this statement</h2>
+
+<p>We update this statement when SentySurf's features or the law change. The effective date at the top shows the current version. Changes are listed in the app's release notes, the new statement ships with the app update, and it is published at <a href="https://sentysurf.com/privacy">sentysurf.com/privacy</a>. Earlier versions are in the public history of the sentysurf-releases repository on GitHub (<a href="https://github.com/ejimkelvin-ai/sentysurf-releases/commits/main/site/privacy.html">github.com/ejimkelvin-ai/sentysurf-releases</a>).</p>
+
+<h2 id="accessibility-and-contact">14. Accessibility and contact</h2>
+
+<p>If you need this statement in another format, or have any question about it, email <a href="mailto:support@sentysurf.com">support@sentysurf.com</a>.</p>
+
+<p class="meta end">Effective date: 2026-11-23.</p>
 </main>
 
 <footer><div class="wrap">
