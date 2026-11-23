@@ -11,15 +11,16 @@
 <meta property="og:url" content="https://sentysurf.com/">
 <meta name="theme-color" content="#040a1a">
 <link rel="icon" href="/favicon.ico">
-<link rel="preload" as="image" type="image/webp" imagesrcset="/img/hero-shield-1600.webp 1600w, /img/hero-shield-2560.webp 2560w, /img/hero-shield-3358.webp 3358w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" imagesrcset="/img/hero-1600.webp 1600w, /img/hero-2560.webp 2560w, /img/hero-3840.webp 3840w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=13">
+<link rel="preload" as="image" type="image/webp" imagesrcset="/img/ui-dashboard-1200.webp 1200w, /img/ui-dashboard-1800.webp 1800w, /img/ui-dashboard-2600.webp 2600w" imagesizes="(max-width: 900px) 92vw, 60vw">
+<link rel="stylesheet" href="/style.css?v=14">
 </head>
 <body>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+    <a class="brand" href="/"><img src="/logo.png" alt="" width="26" height="26">SentySurf</a>
     <nav class="nav-links">
       <a href="#product" class="hide-sm">Product</a>
       <a href="#capabilities" class="hide-sm">Capabilities</a>
@@ -32,84 +33,86 @@
 
 <section class="hero">
   <picture class="hero-bg" aria-hidden="true">
-    <source type="image/webp" srcset="/img/hero-shield-1600.webp 1600w, /img/hero-shield-2560.webp 2560w, /img/hero-shield-3358.webp 3358w" sizes="100vw">
-    <img src="/img/hero-shield-2560.jpg" alt="" width="2560" height="1429" fetchpriority="high" decoding="async">
+    <source type="image/webp" srcset="/img/hero-1600.webp 1600w, /img/hero-2560.webp 2560w, /img/hero-3840.webp 3840w" sizes="100vw">
+    <img src="/img/hero-2560.jpg" alt="" width="2560" height="1429" fetchpriority="high" decoding="async">
   </picture>
-  <div class="wrap">
-    <p class="label"><b>SentySurf</b> Endpoint security monitoring</p>
-    <h1>Watch what changes. <em>Catch what matters.</em></h1>
-    <p class="lead">SentySurf records what your computer looks like when it's healthy, then tells you, in plain language,
-      the moment that changes: a remote-control session, a new startup entry, a weakened setting, an app that's
-      fallen behind on patches. Every finding comes with the fix.</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="#download" data-dl><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span>Download free</span></a>
-      <a class="btn btn-ghost" href="/check">Check this browser</a>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Endpoint security monitoring · Windows, macOS, Linux</p>
+      <h1>Watch what changes. <em>Catch what matters.</em></h1>
+      <p class="lead">SentySurf learns what your computer looks like when it's healthy and tells you, in plain
+        English, the moment that changes: someone connecting remotely, a new program sneaking into startup, a
+        security setting switched off.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#download"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span>Download free</span></a>
+        <a class="btn btn-ghost" href="/check">Check this browser</a>
+      </div>
+      <p class="os">Free · no account · <span data-dl-meta>checksum-verified updates</span></p>
     </div>
-    <p class="os">Available for <a href="#download" data-os-link="windows">Windows</a><span>/</span><a href="#download" data-os-link="mac">macOS</a><span>/</span><a href="#download" data-os-link="linux">Linux</a></p>
-    <dl class="readout" aria-label="Example status">
-      <dt>watch</dt><dd class="live">running · checks every 5 s</dd>
-      <dt>release</dt><dd data-dl-meta>free · no account · checksum-verified updates</dd>
-    </dl>
+    <figure class="hero-shot">
+      <div class="frame"><picture><source media="(max-width: 600px)" type="image/webp" srcset="/img/ui-dashboard-m.webp 980w"><source type="image/webp" srcset="/img/ui-dashboard-1200.webp 1200w, /img/ui-dashboard-1800.webp 1800w, /img/ui-dashboard-2600.webp 2600w" sizes="(max-width: 900px) 92vw, 60vw"><img src="/img/ui-dashboard-1800.jpg" alt="The SentySurf dashboard: one high-risk issue, a score of 76 out of 100 and the last 30 days of scores" width="2600" height="1650" decoding="async"></picture></div>
+      <p class="note n-hero">that dip? an AnyDesk session at 2:14&nbsp;pm</p>
+      <svg class="scrawl a-hero" viewBox="0 0 120 80" aria-hidden="true"><path d="M112 10 C 86 4, 52 18, 34 44 S 14 70, 8 74"/><path d="M8 74 L 22 70 M8 74 L 10 60"/></svg>
+    </figure>
   </div>
 </section>
 
-<section id="product">
+<section class="statement">
+  <div class="wrap">
+    <p class="big">Antivirus checks files. SentySurf watches everything around them: who's connecting, what starts
+      with your computer, and which settings quietly changed.</p>
+    <p class="aside">Keep your antivirus. SentySurf runs next to it.</p>
+  </div>
+</section>
+
+<section id="product" class="wide">
   <div class="wrap">
     <div class="head">
-      <div><p class="label"><b>01</b> The dashboard</p>
-        <h2>One screen tells you whether to worry.</h2></div>
-      <p class="sub">Findings are ranked by severity, explained in a sentence and paired with a button that opens
-        the right system setting. No jargon, no upsell banners, no account.</p>
+      <h2>Every finding, worst first, in words you'd use.</h2>
+      <p class="sub">Each problem comes with a sentence on why it matters and what to do about it. Most have a
+        <b>Fix it</b> button that opens the exact setting. Nothing is hidden behind an upgrade.</p>
     </div>
     <figure class="shot">
-      <div class="frame"><picture><source type="image/webp" srcset="/img/app-dashboard-1200.webp 1200w, /img/app-dashboard-1800.webp 1800w, /img/app-dashboard-2600.webp 2600w" sizes="(max-width: 1440px) 92vw, 1300px"><img src="/img/app-dashboard-1800.jpg" alt="SentySurf dashboard showing a high-risk remote access alert, a score of 76 and a 30-day score history" width="1800" height="1125" loading="lazy" decoding="async"></picture></div>
-      <span class="pin" style="left:17.3%;top:8.1%">1</span>
-      <span class="pin" style="left:17.3%;top:20.2%">2</span>
-      <span class="pin" style="left:17.3%;top:39%">3</span>
-      <span class="pin" style="left:66.6%;top:39%">4</span>
+      <div class="frame"><picture><source media="(max-width: 600px)" type="image/webp" srcset="/img/ui-scan-m.webp 680w"><source type="image/webp" srcset="/img/ui-scan-1200.webp 1200w, /img/ui-scan-1800.webp 1800w, /img/ui-scan-2600.webp 2600w" sizes="(max-width: 1440px) 92vw, 1300px"><img src="/img/ui-scan-1800.jpg" alt="SentySurf scan results with a high-risk AnyDesk session selected and advice on what to do" width="2600" height="640" loading="lazy" decoding="async"></picture></div>
+      <p class="note n1">worst first, always</p>
+      <svg class="scrawl a1" viewBox="0 0 470 130" aria-hidden="true"><path d="M10 120 C 200 126, 410 112, 446 26"/><path d="M446 26 L 432 38 M446 26 L 452 44"/></svg>
+      <p class="note n2">plain English, and what to do next</p>
+      <svg class="scrawl a2" viewBox="0 0 120 80" aria-hidden="true"><path d="M2 72 C 40 70, 80 50, 114 18"/><path d="M114 18 L 98 22 M114 18 L 112 34"/></svg>
     </figure>
-    <ol class="notes">
-      <li><b>Verdict first</b>The header says whether anything needs you, and why, before you read a single number.</li>
-      <li><b>Posture score</b>Firewall, Defender, BitLocker, UAC, updates and more, weighted into one score out of 100.</li>
-      <li><b>Score history</b>Every scan is plotted, so a sudden drop, like the AnyDesk session here, stands out.</li>
-      <li><b>Live alerts</b>Camera use, new devices and remote sessions appear seconds after they happen.</li>
-    </ol>
   </div>
 </section>
 
 <section id="capabilities" class="tint">
   <div class="wrap">
     <div class="head">
-      <div><p class="label"><b>02</b> Capabilities</p>
-        <h2>The coverage antivirus leaves out.</h2></div>
-      <p class="sub">Antivirus inspects files. SentySurf watches the system around them: configuration,
-        persistence, remote access, the network and the software you expose. It runs alongside your antivirus.</p>
+      <h2>The coverage antivirus leaves out.</h2>
+      <p class="sub">Sixteen checks across four jobs. All of them run on your computer, and most run all the time.</p>
     </div>
     <div class="index">
-      <div><h3 class="group">Detect</h3><ol>
-        <li><span class="n">01</span><div><h3>Remote-access sessions</h3><p>AnyDesk, TeamViewer or Quick Assist launching or accepting a connection. Built for the tech-support scam.</p></div></li>
-        <li><span class="n">02</span><div><h3>Baseline drift</h3><p>New startup entries, services, scheduled tasks, listening ports and changes to sensitive files.</p></div></li>
-        <li><span class="n">03</span><div><h3>Traffic redirection</h3><p>Altered DNS, proxy settings and homepage overrides, the usual signs of a hijack.</p></div></li>
-        <li><span class="n">04</span><div><h3>Clipboard hijacking</h3><p>A copied crypto wallet address swapped for an attacker's, flagged within a second.</p></div></li>
-      </ol></div>
-      <div><h3 class="group">Harden</h3><ol>
-        <li><span class="n">05</span><div><h3>Posture scoring</h3><p>Defender, firewall, BitLocker, UAC, Remote Desktop, automatic sign-in and backups, rescanned daily.</p></div></li>
-        <li><span class="n">06</span><div><h3>Vulnerable software</h3><p>Missing security updates, unsupported Windows, macOS and Ubuntu releases, and exploitable app versions.</p></div></li>
-        <li><span class="n">07</span><div><h3>Ransomware shield</h3><p>Hidden tripwire files catch encryption the moment it starts, and the app doing it is paused. Works with any antivirus, on every system.</p></div></li>
-        <li><span class="n">08</span><div><h3>Home network</h3><p>Every device on your Wi-Fi, new arrivals flagged, router checked for UPnP and Telnet.</p></div></li>
-      </ol></div>
-      <div><h3 class="group">Inspect</h3><ol>
-        <li><span class="n">09</span><div><h3>Links before you click</h3><p>Look-alike domains, foreign look-alike letters, hidden redirects and risky downloads.</p></div></li>
-        <li><span class="n">10</span><div><h3>Files before you open</h3><p>Disguised extensions, macros and broken signatures, plus a Microsoft Defender scan.</p></div></li>
-        <li><span class="n">11</span><div><h3>Browser extensions</h3><p>A 0–100 risk score per extension, permissions in plain language, policy-forced installs caught.</p></div></li>
-        <li><span class="n">12</span><div><h3>Camera &amp; microphone</h3><p>Each app that turns them on, straight from the system's own access records.</p></div></li>
-      </ol></div>
-      <div><h3 class="group">Connect</h3><ol>
-        <li><span class="n">13</span><div><h3>SIEM forwarding</h3><p>Alerts and scan results to Splunk, Sentinel, Elastic, QRadar or Wazuh: Event Log, syslog with CEF, HTTPS or JSON.</p></div></li>
-        <li><span class="n">14</span><div><h3>Family console</h3><p>Every PC you look after on one screen, end-to-end encrypted with a family code.</p></div></li>
-        <li><span class="n">15</span><div><h3>Mac and Linux</h3><p>FileVault, Gatekeeper, SIP and XProtect on Mac; firewall, disk encryption, SSH and automatic updates on Linux.</p></div></li>
-        <li><span class="n">16</span><div><h3>Browser check</h3><p>A free web check of any browser's version, WebRTC exposure, tracker blocking and fingerprint. <a href="/check">Try it</a></p></div></li>
-      </ol></div>
+      <div><h3 class="group">Detect</h3><ul>
+        <li><h3>Remote-access sessions</h3><p>AnyDesk, TeamViewer or Quick Assist starting up or accepting a connection. Built for the tech-support scam.</p></li>
+        <li><h3>Baseline drift</h3><p>New startup entries, services, scheduled tasks, listening ports and changes to sensitive files.</p></li>
+        <li><h3>Traffic redirection</h3><p>Altered DNS, proxy settings and homepage overrides, the usual signs of a hijack.</p></li>
+        <li><h3>Clipboard hijacking</h3><p>A copied crypto wallet address swapped for an attacker's, flagged within a second.</p></li>
+      </ul></div>
+      <div><h3 class="group">Harden</h3><ul>
+        <li><h3>Posture score</h3><p>Firewall, antivirus, disk encryption, UAC, Remote Desktop, automatic sign-in and backups, rechecked daily.</p></li>
+        <li><h3>Vulnerable software</h3><p>Missing security updates, unsupported Windows, macOS and Ubuntu releases, and exploitable app versions.</p></li>
+        <li><h3>Ransomware shield</h3><p>Hidden tripwire files catch encryption as it starts, and the app doing it is paused.</p></li>
+        <li><h3>Home network</h3><p>Every device on your Wi-Fi, new arrivals flagged, router checked for UPnP and Telnet.</p></li>
+      </ul></div>
+      <div><h3 class="group">Inspect</h3><ul>
+        <li><h3>Links before you click</h3><p>Look-alike domains, swapped letters, hidden redirects and risky downloads.</p></li>
+        <li><h3>Files before you open</h3><p>Disguised extensions, macros and broken signatures, plus your system's own malware scan.</p></li>
+        <li><h3>Browser extensions</h3><p>A 0–100 risk score per extension, permissions in plain language, policy-locked installs removed.</p></li>
+        <li><h3>Camera &amp; microphone</h3><p>Each app that turns them on, straight from the system's own records.</p></li>
+      </ul></div>
+      <div><h3 class="group">Connect</h3><ul>
+        <li><h3>SIEM forwarding</h3><p>Alerts and scan results to Splunk, Sentinel, Elastic, QRadar or Wazuh over Event Log, syslog or HTTPS.</p></li>
+        <li><h3>Family console</h3><p>Every computer you look after on one screen, end-to-end encrypted with a family code.</p></li>
+        <li><h3>Mac and Linux</h3><p>FileVault, Gatekeeper and SIP on Mac; firewall, disk encryption, SSH and automatic updates on Linux.</p></li>
+        <li><h3>Browser check</h3><p>A free web check of any browser's version, WebRTC exposure and fingerprint. <a href="/check">Try it</a></p></li>
+      </ul></div>
     </div>
   </div>
 </section>
@@ -117,28 +120,31 @@
 <section>
   <div class="wrap rows">
     <div class="row">
-      <div class="art"><picture><source type="image/webp" srcset="/img/remote-access-960.webp 960w, /img/remote-access-1440.webp 1440w, /img/remote-access-2400.webp 2400w" sizes="(max-width: 900px) 92vw, 40vw"><img src="/img/remote-access-1440.jpg" alt="A connection beam stopped by a shield before it reaches a laptop" width="1440" height="1075" loading="lazy" decoding="async"></picture></div>
-      <div><p class="label"><b>03</b> Remote access</p>
+      <figure class="art-wrap">
+        <div class="art"><picture><source type="image/webp" srcset="/img/ui-alert-1200.webp 1200w, /img/ui-alert-1800.webp 1800w, /img/ui-alert-2164.webp 2164w" sizes="(max-width: 900px) 92vw, 56vw"><img src="/img/ui-alert-1800.jpg" alt="SentySurf alert list with a high-severity alert: someone may be viewing or controlling this PC, AnyDesk incoming session" width="2164" height="560" loading="lazy" decoding="async"></picture></div>
+        <p class="note n-below">what you see a few seconds after a stranger connects</p>
+      </figure>
+      <div><p class="eyebrow">Remote access</p>
         <h2 class="h2">Stops the tech-support scam at the first connection.</h2>
-        <p class="sub">Scammers talk people into installing a remote-control tool, then take over the screen.
-          SentySurf flags the tool the moment it launches and raises a high-severity alert as soon as someone
-          connects, on your PC or any PC in your family.</p></div>
+        <p class="sub">Scammers phone, pretend to be Microsoft or your bank, and talk you into installing a
+          remote-control app. SentySurf flags the app the moment it starts and raises a high-risk alert as soon as
+          someone connects, on your computer or any computer in your family.</p></div>
     </div>
     <div class="row flip">
-      <div class="art"><picture><source type="image/webp" srcset="/img/app-network-1200.webp 1200w, /img/app-network-1800.webp 1800w, /img/app-network-2600.webp 2600w" sizes="(max-width: 900px) 92vw, 56vw"><img src="/img/app-network-1800.jpg" alt="SentySurf Network page listing six devices with one new tablet flagged" width="1800" height="1125" loading="lazy" decoding="async"></picture></div>
-      <div><p class="label"><b>04</b> Network</p>
+      <div class="art"><picture><source type="image/webp" srcset="/img/ui-network-1200.webp 1200w, /img/ui-network-1800.webp 1800w, /img/ui-network-2600.webp 2600w" sizes="(max-width: 900px) 92vw, 56vw"><img src="/img/ui-network-1800.jpg" alt="SentySurf Network page listing six devices, with a new tablet flagged" width="2600" height="1650" loading="lazy" decoding="async"></picture></div>
+      <div><p class="eyebrow">Network</p>
         <h2 class="h2">Know every device on your Wi-Fi.</h2>
-        <p class="sub">One scan lists the phones, TVs and laptops on your network. From then on SentySurf notices
-          newcomers on its own, without probing anything, and checks the router for settings botnets abuse.</p>
-        <ul class="facts"><li>Name devices and mark the ones you know</li><li>Alerts when an unknown device joins</li><li>UPnP and Telnet exposure on the router</li></ul></div>
+        <p class="sub">One scan lists the phones, TVs and laptops on your network. After that, SentySurf notices
+          newcomers by itself and checks your router for the settings botnets look for.</p>
+        <ul class="facts"><li>Name devices and mark the ones you know</li><li>An alert when an unknown device joins</li><li>UPnP and Telnet exposure on the router</li></ul></div>
     </div>
     <div class="row">
-      <div class="art"><picture><source type="image/webp" srcset="/img/app-password-1200.webp 1200w, /img/app-password-1800.webp 1800w, /img/app-password-2600.webp 2600w" sizes="(max-width: 900px) 92vw, 56vw"><img src="/img/app-password-1800.jpg" alt="SentySurf Safety check flagging a look-alike PayPal link as dangerous" width="1800" height="1125" loading="lazy" decoding="async"></picture></div>
-      <div><p class="label"><b>05</b> Safety check</p>
+      <div class="art"><picture><source type="image/webp" srcset="/img/ui-link-1200.webp 1200w, /img/ui-link-1800.webp 1800w, /img/ui-link-2164.webp 2164w" sizes="(max-width: 900px) 92vw, 56vw"><img src="/img/ui-link-1800.jpg" alt="SentySurf Safety check flagging a look-alike PayPal link as dangerous" width="2164" height="860" loading="lazy" decoding="async"></picture></div>
+      <div><p class="eyebrow">Safety check</p>
         <h2 class="h2">A second opinion before you click.</h2>
-        <p class="sub">Paste a link from a text or email and SentySurf explains what's wrong with it without opening
-          it. Pick a download and it checks who signed it, where it came from and what's hiding inside.</p>
-        <ul class="facts"><li>paypa1.com and rnicrosoft.com caught as look-alikes</li><li>invoice.pdf.exe caught as a disguised program</li><li>Password breach check using k-anonymity</li></ul></div>
+        <p class="sub">Paste a link from a text or email and SentySurf tells you what's wrong with it, without ever
+          opening it. Pick a download and it checks who signed it, where it came from and what's inside.</p>
+        <ul class="facts"><li>paypa1.com and rnicrosoft.com caught as look-alikes</li><li>invoice.pdf.exe caught as a disguised program</li><li>Breached-password check that never sends your password</li></ul></div>
     </div>
   </div>
 </section>
@@ -146,26 +152,43 @@
 <section id="family" class="tint">
   <div class="wrap">
     <div class="row flip">
-      <div class="art"><picture><source type="image/webp" srcset="/img/family-960.webp 960w, /img/family-1440.webp 1440w, /img/family-2400.webp 2400w" sizes="(max-width: 900px) 92vw, 40vw"><img src="/img/family-1440.jpg" alt="Connected homes reporting to one central dashboard" width="1440" height="1075" loading="lazy" decoding="async"></picture></div>
-      <div><p class="label"><b>06</b> Family</p>
-        <h2 class="h2">Look after the PCs you're responsible for.</h2>
-        <p class="sub">Enrol a parent's laptop or a child's desktop with a 16-character family code. Each one reports
-          its status to your dashboard, and you're told the moment one needs you.</p>
-        <ul class="facts"><li>No accounts or sign-ups</li><li>End-to-end encrypted with a key derived from the code</li><li>Status summaries only: never files or browsing</li><li>Hardware inventory for every PC, exportable to CSV</li></ul></div>
+      <figure class="art-wrap">
+        <div class="art"><picture><source type="image/webp" srcset="/img/ui-family-1200.webp 1200w, /img/ui-family-1800.webp 1800w, /img/ui-family-2164.webp 2164w" sizes="(max-width: 900px) 92vw, 56vw"><img src="/img/ui-family-1800.jpg" alt="SentySurf Family page with four computers; Mum's laptop needs attention after a remote-control alert" width="2164" height="1300" loading="lazy" decoding="async"></picture></div>
+        <p class="note n-below">Mum's laptop just had a remote session. You'd get a pop-up too.</p>
+      </figure>
+      <div><p class="eyebrow">Family</p>
+        <h2 class="h2">Look after the computers you're responsible for.</h2>
+        <p class="sub">Put SentySurf on a parent's laptop or a kid's desktop and enter your family code. Each one
+          reports its status to you, and you hear about it the moment one needs help.</p>
+        <ul class="facts"><li>No accounts or sign-ups</li><li>End-to-end encrypted with a key made from the code</li><li>Security status only, never files or browsing</li><li>Hardware inventory for every computer, exportable to CSV</li></ul></div>
     </div>
+  </div>
+</section>
+
+<section class="limits">
+  <div class="wrap">
+    <h2>What SentySurf won't do.</h2>
+    <ul class="wont">
+      <li><b>Remove malware.</b> That's your antivirus's job. SentySurf tells you something's wrong and points you to the fix.</li>
+      <li><b>Read your files, email or browsing.</b> It looks at settings and system state, never at what you've written or where you've been.</li>
+      <li><b>Let you spy on your family.</b> Family mode shares a security summary. No screens, messages or history.</li>
+      <li><b>Promise you're safe.</b> A high score means fewer weak spots. It doesn't prove nothing's wrong.</li>
+      <li><b>Ask for an account, a card or your email.</b> There's nothing to sign up for, now or later.</li>
+      <li><b>Come signed, yet.</b> Windows and macOS may warn you the first time you open it while code signing is set up. <a href="/help#smartscreen">What to do</a></li>
+    </ul>
   </div>
 </section>
 
 <section>
   <div class="wrap">
     <div class="head">
-      <div><p class="label"><b>07</b> Setup</p><h2>Running in two minutes.</h2></div>
-      <p class="sub">There's nothing to configure. Updates install themselves after their checksum is verified.</p>
+      <h2>Install it, note one code, fix what's red.</h2>
+      <p class="sub">There's nothing to configure. Updates install themselves once their checksum checks out.</p>
     </div>
     <ol class="steps">
-      <li><h3>Install</h3><p>Run the installer. Live monitoring starts for every account on the PC.</p></li>
-      <li><h3>Note your fingerprint</h3><p>SentySurf baselines the system and shows a 16-character fingerprint. If it ever changes without you, its records were tampered with.</p></li>
-      <li><h3>Fix and enrol</h3><p>Work through findings by severity, then add the other PCs you look after.</p></li>
+      <li><h3>Install</h3><p>Run the installer. Live protection starts for every account on the computer.</p></li>
+      <li><h3>Write down your fingerprint</h3><p>SentySurf takes a snapshot of the system and shows a 16-character code. If it ever changes and you didn't do it, someone tampered with SentySurf's records.</p></li>
+      <li><h3>Fix, then add family</h3><p>Work through anything red or amber, then add the other computers you look after.</p></li>
     </ol>
   </div>
 </section>
@@ -173,7 +196,7 @@
 <section class="tint">
   <div class="wrap">
     <div class="head">
-      <div><p class="label"><b>08</b> Alongside your antivirus</p><h2>Keep your antivirus. Add visibility.</h2></div>
+      <h2>Keep your antivirus. Add visibility.</h2>
       <p class="sub">Microsoft Defender, XProtect or your antivirus handle malware. SentySurf adds posture, drift
         and remote-access visibility, and a view across the whole household.</p>
     </div>
@@ -185,8 +208,9 @@
       <tr><td>Posture score with one-click fixes</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no">Partial</td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
       <tr><td>Persistence and port drift</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
       <tr><td>Link, file and extension checks</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no">Partial</td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
+      <tr><td>Ransomware tripwires</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no">Partial</td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
       <tr><td>Home network device list</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
-      <tr><td>Multi-PC household view</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td><td class="no">Screen time only</td></tr>
+      <tr><td>Multi-computer household view</td><td class="us yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td><td class="no">Screen time only</td></tr>
       <tr><td>Malware blocking and removal</td><td class="us no">Use your antivirus</td><td class="yes"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td><td class="no"><svg width="16" height="16" viewBox="0 0 16 16" aria-label="No"><path d="M4 8h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
       <tr><td>Price</td><td class="us yes">Free</td><td class="yes">Free</td><td class="no">Often paid</td></tr>
       </tbody>
@@ -198,7 +222,7 @@
 <section id="download" class="download">
   <div class="wrap dl-wrap">
     <div class="dl-head">
-      <p class="label"><b>09</b> Download</p>
+      <p class="eyebrow">Download</p>
       <h2>Get SentySurf.</h2>
       <p class="meta" data-dl-version>Free for Windows, macOS and Linux</p>
       <p class="sub" data-dl-hint>The same app and the same protection on every system.</p>
@@ -245,7 +269,7 @@
 
 <footer>
   <div class="wrap">
-    <div><a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+    <div><a class="brand" href="/"><img src="/logo.png" alt="" width="26" height="26">SentySurf</a>
       <p class="fine">Security monitoring for Windows, macOS and Linux. Built to sit next to your antivirus, not replace it.</p>
       <p class="fine">© <span data-year>2026</span> SentySurf</p></div>
     <div><h4>Product</h4><ul><li><a href="#product">Dashboard</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#family">Family</a></li><li><a href="/check">Browser check</a></li><li><a href="#download">Download</a></li></ul></div>
@@ -292,7 +316,7 @@
       document.querySelectorAll("[data-dl-version]").forEach(e =>
         e.textContent = `Version ${info.version} · released ${new Date(info.published).toLocaleDateString(undefined, {month: "short", day: "numeric", year: "numeric"})} · free for Windows, macOS and Linux`);
       document.querySelectorAll("[data-dl-meta]").forEach(e =>
-        e.textContent = `v${info.version} · free · no account · checksum-verified updates`);
+        e.textContent = `v${info.version} · checksum-verified updates`);
     }
   } catch (e) {}
 })();
