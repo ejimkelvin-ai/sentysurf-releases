@@ -6,7 +6,7 @@
 <title>Privacy | SentySurf</title>
 <meta name="description" content="How SentySurf treats your privacy: what it reads, what it stores and the little it sends.">
 <link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style.css?v=6">
+<link rel="stylesheet" href="/style.css?v=7">
 </head>
 <body>
 <header class="nav"><div class="wrap">
@@ -23,22 +23,28 @@
   <h2>What SentySurf reads on your PC</h2>
   <p>Security settings, the list of running programs and their network connections, startup entries,
     scheduled tasks and services, browser extension lists, and Windows' own records of which apps used your
-    camera or microphone. It never reads your documents, emails, messages or browsing history.</p>
+    camera or microphone, and the list of devices your PC already sees on your home network. Clipboard Guard looks at copied text only to see whether it's a crypto wallet address; it's never saved or sent. Files and links are inspected only when you choose them on the Safety check page. It never reads your documents, emails, messages or browsing history.</p>
 
   <h2>What it stores</h2>
-  <p>Its baseline (the known-good snapshot of your system), alert history, settings and scan results, in a
+  <p>Its baseline (the known-good snapshot of your system), alert history, settings, scan results and the names you give devices on your network, in a
     folder on your PC that only administrators can open (<code>C:\ProgramData\SentySurf</code>). Nothing is
     uploaded.</p>
 
   <h2>What it sends over the internet</h2>
   <ul>
-    <li><b>Update check</b>: every 6 hours SentySurf asks GitHub whether a newer release exists. It's an
+    <li><b>Update check</b>: every 6 hours SentySurf asks sentysurf.com and GitHub whether a newer release exists. It's an
       ordinary web request; nothing about you or your PC is included.</li>
-    <li><b>Password check</b> (only when you use it): only the first 5 characters of a one-way fingerprint
+    <li><b>Password check</b> (on the Safety check page, only when you use it): only the first 5 characters of a one-way fingerprint
       (SHA-1 hash) of the password go to Have I Been Pwned. The password itself never leaves your PC and is
       never saved.</li>
     <li><b>App update check</b> (during scans): Windows' built-in winget tool contacts Microsoft's app
       catalogue.</li>
+    <li><b>Network scan</b> (only when you click Scan network): one empty packet to each address on your own home
+      network so devices show up, plus a check of whether your router answers UPnP or Telnet. Nothing leaves your
+      home network.</li>
+    <li><b>Safety check</b>: links are checked on your PC and never opened or sent. Files are scanned by Microsoft
+      Defender on your PC. “Look up on VirusTotal” opens your browser with the file's fingerprint (SHA-256) only,
+      and only when you click it.</li>
     <li><b>Family mode</b> (only if you enable it): see below.</li>
   </ul>
 

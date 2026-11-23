@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://sentysurf.com/">
 <meta name="theme-color" content="#070c18">
 <link rel="icon" href="/favicon.ico">
-<link rel="preload" as="image" href="/img/hero-1400.webp" imagesrcset="/img/hero-1400.webp 1400w, /img/hero-2400.webp 2400w" imagesizes="100vw">
-<link rel="stylesheet" href="/style.css?v=6">
+<link rel="preload" as="image" type="image/webp" imagesrcset="/img/hero-1600.webp 1600w, /img/hero-2560.webp 2560w, /img/hero-3840.webp 3840w" imagesizes="100vw" fetchpriority="high">
+<link rel="stylesheet" href="/style.css?v=7">
 </head>
 <body>
 <header class="nav">
@@ -30,8 +30,8 @@
 
 <section class="hero">
   <picture class="hero-bg" aria-hidden="true">
-    <source type="image/webp" srcset="/img/hero-1400.webp 1400w, /img/hero-2400.webp 2400w" sizes="100vw">
-    <img src="/img/hero-1400.jpg" srcset="/img/hero-1400.jpg 1400w, /img/hero-2400.jpg 2400w" sizes="100vw" alt="" fetchpriority="high">
+    <source type="image/webp" srcset="/img/hero-1600.webp 1600w, /img/hero-2560.webp 2560w, /img/hero-3840.webp 3840w" sizes="100vw">
+    <img src="/img/hero-2560.jpg" alt="" width="2560" height="1429" fetchpriority="high" decoding="async">
   </picture>
   <div class="wrap">
     <div>
@@ -96,7 +96,7 @@
 <section class="spots">
   <div class="wrap">
     <div class="spot">
-      <picture><source type="image/webp" srcset="/img/remote-access.webp"><img src="/img/remote-access.jpg" alt="A connection beam stopped by a shield before it reaches a laptop" loading="lazy" width="900" height="672"></picture>
+      <picture><source type="image/webp" srcset="/img/remote-access-960.webp 960w, /img/remote-access-1440.webp 1440w, /img/remote-access-2400.webp 2400w" sizes="(max-width: 900px) 92vw, 46vw"><img src="/img/remote-access-1440.jpg" alt="A connection beam stopped by a shield before it reaches a laptop" loading="lazy" decoding="async" width="1440" height="1075"></picture>
       <div>
         <span class="eyebrow">Remote-access detection</span>
         <h2 class="h2">Stops the tech-support scam at the first connection</h2>
@@ -106,7 +106,7 @@
       </div>
     </div>
     <div class="spot rev">
-      <picture><source type="image/webp" srcset="/img/baseline.webp"><img src="/img/baseline.jpg" alt="Stacked glass layers with one block highlighted as changed" loading="lazy" width="900" height="672"></picture>
+      <picture><source type="image/webp" srcset="/img/baseline-960.webp 960w, /img/baseline-1440.webp 1440w, /img/baseline-2400.webp 2400w" sizes="(max-width: 900px) 92vw, 46vw"><img src="/img/baseline-1440.jpg" alt="Stacked glass layers with one block highlighted as changed" loading="lazy" decoding="async" width="1440" height="1075"></picture>
       <div>
         <span class="eyebrow">Baseline drift</span>
         <h2 class="h2">Knows what normal looks like, and what changed</h2>
@@ -131,28 +131,37 @@
         <p>Alerts the moment AnyDesk, TeamViewer, Quick Assist or another remote-control tool launches or takes an
           inbound session. Built for the tech-support scam.</p></div>
       <div class="card"><div class="icon g">✓</div><h3>Posture scoring</h3>
-        <p>Audits firewall, Defender, BitLocker, Windows Update, UAC and local administrator accounts. Weighted by
-          severity, scored out of 100, with one-click remediation where Windows allows it.</p></div>
+        <p>Audits firewall, Defender, BitLocker, UAC, Remote Desktop, automatic sign-in, restore points and backups.
+          Scored out of 100, rescanned daily, with one-click remediation where Windows allows it.</p></div>
       <div class="card"><div class="icon">◎</div><h3>Baseline drift</h3>
         <p>Records a known-good baseline, then reports new startup entries, services, scheduled tasks, listening
           ports and changes to sensitive files.</p></div>
+      <div class="card"><div class="icon r">⚑</div><h3>Link &amp; file inspection</h3>
+        <p>Checks a link for look-alike domains and hidden redirects before you click, and a download for
+          disguised extensions, macros and broken signatures before you open it, backed by a Defender scan.</p></div>
+      <div class="card"><div class="icon">⌂</div><h3>Home network inventory</h3>
+        <p>Lists every device on your Wi-Fi, flags new arrivals and checks the router for UPnP and Telnet exposure.
+          Passive monitoring; other devices are never probed.</p></div>
+      <div class="card"><div class="icon g">▣</div><h3>Ransomware folder control</h3>
+        <p>Turns on Windows' Controlled Folder Access, adds folders to it, shows what it blocked and lets you allow
+          the apps you trust, all without digging through Defender settings.</p></div>
+      <div class="card"><div class="icon">🧩</div><h3>Extension audit</h3>
+        <p>Scores every extension in Chrome, Edge, Brave and Firefox from 0 to 100, explains its permissions in plain
+          language and catches policy-forced installs and off-store updaters.</p></div>
       <div class="card"><div class="icon y">↻</div><h3>Patch management</h3>
         <p>Inventories outdated applications through winget and updates them in place. Skip a release or defer it
           when the timing is wrong.</p></div>
-      <div class="card"><div class="icon">🧩</div><h3>Extension audit</h3>
-        <p>Enumerates extensions across Chrome, Edge, Brave and Firefox, rates their permissions and marks search
-          hijackers for removal.</p></div>
+      <div class="card"><div class="icon y">✱</div><h3>Clipboard hijack detection</h3>
+        <p>Flags clipper malware the instant a copied crypto wallet address is swapped for an attacker's. Clipboard
+          contents are matched in memory and never stored.</p></div>
       <div class="card"><div class="icon g">◉</div><h3>Camera &amp; microphone access</h3>
         <p>Logs each application that opens the camera or microphone, straight from Windows' own access records.</p></div>
       <div class="card"><div class="icon">🌐</div><h3>Traffic redirection</h3>
         <p>Detects altered DNS resolvers, proxy settings and homepage overrides, the standard signs of traffic
           being rerouted.</p></div>
-      <div class="card"><div class="icon y">✱</div><h3>Credential exposure</h3>
-        <p>Tests a password against known breach data using k-anonymity. The password itself never leaves the
-          device.</p></div>
-      <div class="card"><div class="icon g">⛨</div><h3>Read-only by design</h3>
-        <p>Observes and reports. Nothing is changed, quarantined or terminated without an explicit action from you.
-          Runs alongside Defender.</p></div>
+      <div class="card"><div class="icon g">⛨</div><h3>Quiet when it should be</h3>
+        <p>Holds routine pop-ups during games, films and presentations, then summarises them. Nothing is changed
+          without an explicit action from you. Runs alongside Defender.</p></div>
     </div>
   </div>
 </section>
@@ -173,7 +182,7 @@
         <li>Hardware and OS inventory for every device, exportable to CSV.</li>
       </ul>
     </div>
-    <picture class="fam-art"><source type="image/webp" srcset="/img/family.webp"><img src="/img/family.jpg" alt="Connected homes reporting to one central dashboard" loading="lazy" width="900" height="672"></picture>
+    <picture class="fam-art"><source type="image/webp" srcset="/img/family-960.webp 960w, /img/family-1440.webp 1440w, /img/family-2400.webp 2400w" sizes="(max-width: 900px) 92vw, 46vw"><img src="/img/family-1440.jpg" alt="Connected homes reporting to one central dashboard" loading="lazy" decoding="async" width="1440" height="1075"></picture>
   </div>
 </section>
 
