@@ -7,12 +7,12 @@
 <meta name="description" content="Installing SentySurf, which download to choose, what to do if Windows blocks it, and setting up Family mode.">
 <link rel="icon" href="/favicon.ico">
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=8">
+<link rel="stylesheet" href="/style.css?v=9">
 </head>
 <body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-  <nav class="nav-links"><a href="/#capabilities" class="hide-sm">Capabilities</a><a href="/help">Help</a><a href="/privacy" class="hide-sm">Privacy</a><a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
+  <nav class="nav-links"><a href="/#capabilities" class="hide-sm">Capabilities</a><a href="/check">Browser check</a><a href="/help" class="hide-sm">Help</a><a href="/privacy" class="hide-sm">Privacy</a><a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
 </div></header>
 
 <main class="prose">
@@ -58,6 +58,25 @@
   <h2>Updates</h2>
   <p>SentySurf checks for a new release every 6 hours. With <b>Install updates automatically</b> on (the default), updates are verified against their published SHA-256 checksum and installed in the background while the window is closed. You can also install from <b>Settings → Updates</b>.</p>
 
+  <h2 id="mac">Installing on a Mac</h2>
+  <ol>
+    <li>Download the disk image for your Mac: <b>Apple silicon</b> (M1 or newer) or <b>Intel</b>. Not sure? Apple menu &gt; About This Mac shows the chip.</li>
+    <li>Open it and drag <b>SentySurf</b> onto <b>Applications</b>. Always run it from Applications, not from the disk image.</li>
+    <li>The first time you open it, macOS may say it can't verify the developer, because SentySurf isn't notarised by Apple yet. Open <b>System Settings &gt; Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b>. Only do this for a copy you downloaded from sentysurf.com and, ideally, <a href="#checksum">checked</a>.</li>
+    <li>Turn on <b>Live protection</b> in the app. It starts by itself when you log in, and you can turn it off at any time.</li>
+  </ol>
+  <p>Updates: SentySurf tells you when a new version is out, downloads the disk image and checks its checksum. Drag the new copy onto Applications and choose Replace.</p>
+
+  <h2 id="siem">Sending SentySurf to a SIEM</h2>
+  <p>Open <b>Settings &gt; SIEM &amp; log forwarding</b> and turn on any destination, then click <b>Send test event</b>:</p>
+  <ul>
+    <li><b>Windows Event Log</b>: Application log, source <code>SentySurf</code>, event IDs 1000 (info), 2000 (low), 3000 (medium) and 4000 (high). Collect it with Windows Event Forwarding, Microsoft Sentinel's Azure Monitor Agent, the Splunk Universal Forwarder, Elastic Agent or Wazuh.</li>
+    <li><b>Syslog</b>: RFC 5424 over UDP, TCP or TLS, with CEF (ArcSight, QRadar, Sentinel's CEF connector) or JSON as the message.</li>
+    <li><b>HTTPS collector</b>: Splunk HTTP Event Collector (sourcetype <code>sentysurf:json</code>) or any JSON webhook. Addresses must use https.</li>
+    <li><b>JSON log file</b>: one Elastic Common Schema event per line in SentySurf's data folder, for file-tailing agents.</li>
+  </ul>
+  <p>SentySurf sends alerts and, after each scan, a summary plus every finding. Nothing is sent anywhere unless you turn a destination on.</p>
+
   <h2 id="moved">Where did Password check and Allowlist go?</h2>
   <p>Since version 2.15, <b>Password check</b> is part of <b>Safety check</b>, alongside the link and file checks. The <b>Allowlist</b> lives in <b>Settings</b> under <b>Manage allowlist</b>.</p>
 
@@ -86,9 +105,9 @@
 
 <footer><div class="wrap">
   <div><a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-    <p class="fine">Host monitoring for Windows. Built to sit next to Microsoft Defender, not replace it.</p>
+    <p class="fine">Host monitoring for Windows and macOS. Built to sit next to your antivirus, not replace it.</p>
     <p class="fine">© 2026 SentySurf</p></div>
-  <div><h4>Product</h4><ul><li><a href="/#product">Dashboard</a></li><li><a href="/#capabilities">Capabilities</a></li><li><a href="/#family">Family</a></li><li><a href="/#download">Download</a></li></ul></div>
+  <div><h4>Product</h4><ul><li><a href="/#product">Dashboard</a></li><li><a href="/#capabilities">Capabilities</a></li><li><a href="/#family">Family</a></li><li><a href="/check">Browser check</a></li><li><a href="/#download">Download</a></li></ul></div>
   <div><h4>Support</h4><ul><li><a href="/help">Help</a></li><li><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></li><li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases">All releases</a></li></ul></div>
   <div><h4>Trust</h4><ul><li><a href="/privacy">Privacy</a></li><li><a href="/help#checksum">Verify a download</a></li></ul></div>
 </div></footer>

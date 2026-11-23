@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browser check | SentySurf</title>
+<meta name="description" content="Check your web browser's security in seconds: is it up to date, does it leak your local network address, does it block trackers, and what can sites learn about you. Runs entirely in your browser.">
+<meta property="og:title" content="SentySurf Browser check">
+<meta property="og:description" content="Is your browser up to date and private? A free check that runs entirely in your browser.">
+<meta property="og:image" content="https://sentysurf.com/logo-512.png">
+<meta name="theme-color" content="#080d18">
+<link rel="icon" href="/favicon.ico">
+<link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=9">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+  <nav class="nav-links"><a href="/#capabilities" class="hide-sm">Capabilities</a><a href="/check">Browser check</a><a href="/help" class="hide-sm">Help</a><a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
+</div></header>
+
+<section class="bc-head">
+  <div class="wrap">
+    <p class="label"><b>Free tool</b> Browser check</p>
+    <h1 class="bc-title">How safe is this browser?</h1>
+    <p class="lead">A quick check of the browser you're using right now: whether it's up to date, whether it gives away
+      your local network address, whether it blocks trackers, and what any website can learn about you.</p>
+    <p class="bc-privacy mono">Runs entirely in your browser · nothing is sent to SentySurf or stored</p>
+  </div>
+</section>
+
+<section class="bc-main">
+  <div class="wrap bc-grid">
+    <aside class="bc-summary" aria-live="polite">
+      <div class="bc-ring" id="ring"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="bar" id="ringbar"/></svg>
+        <div class="bc-score"><b id="score">–</b><span>of 100</span></div></div>
+      <h2 class="bc-verdict" id="verdict">Checking…</h2>
+      <p class="bc-sub" id="verdict-sub">This takes about two seconds.</p>
+      <dl class="bc-facts" id="facts"></dl>
+      <div class="bc-actions">
+        <button class="btn btn-ghost btn-sm" id="again" type="button">Check again</button>
+        <button class="btn btn-ghost btn-sm" id="copy" type="button">Copy report</button>
+      </div>
+    </aside>
+    <div>
+      <ol class="bc-list" id="results"></ol>
+      <div class="bc-more">
+        <p class="label"><b>Go further</b> What a web page can't see</p>
+        <p class="sub">Websites can't look at your extensions, your other browsers or your computer's settings, so
+          this check can't either. The SentySurf app can: it scores every extension in every browser and profile,
+          catches search hijackers and policy-forced installs, and checks the PC itself.</p>
+        <a class="btn btn-primary" href="/#download">Download SentySurf</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div><a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+    <p class="fine">Host monitoring for Windows and macOS. Built to sit next to your antivirus, not replace it.</p>
+    <p class="fine">© 2026 SentySurf</p></div>
+  <div><h4>Product</h4><ul><li><a href="/#product">Dashboard</a></li><li><a href="/#capabilities">Capabilities</a></li><li><a href="/check">Browser check</a></li><li><a href="/#download">Download</a></li></ul></div>
+  <div><h4>Support</h4><ul><li><a href="/help">Help</a></li><li><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></li><li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases">All releases</a></li></ul></div>
+  <div><h4>Trust</h4><ul><li><a href="/privacy">Privacy</a></li><li><a href="/help#checksum">Verify a download</a></li></ul></div>
+</div></footer>
+
+<script>
+(() => {
+"use strict";
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const PENALTY = {fail: 30, warn: 12, info: 0, ok: 0};
+const LABEL = {ok: "Good", warn: "Improve", fail: "Fix now", info: "Note"};
+const FALLBACK = {chrome: 157, firefox: 160, safari: 27, safari_min_supported: 26};
+let report = [];
+
+async function versions() {
+  try {
+    const r = await fetch("/check-versions.json", {cache: "no-store"});
+    if (r.ok) return Object.assign({}, FALLBACK, await r.json());
+  } catch (e) {}
+  return FALLBACK;
+}
+
+async function identify() {
+  const ua = navigator.userAgent;
+  const out = {name: "Your browser", engine: "", major: 0, full: "", os: "", osVersion: "", mobile: /Mobi|Android|iPhone|iPad/.test(ua)};
+  const uad = navigator.userAgentData;
+  if (uad && uad.getHighEntropyValues) {
+    try {
+      const h = await uad.getHighEntropyValues(["fullVersionList", "platformVersion"]);
+      const list = (h.fullVersionList || []).filter(b => !/Not.?A.?Brand|Chromium/i.test(b.brand));
+      const pick = list.find(b => /Edge|Opera|Brave|Vivaldi|Yandex|Samsung/i.test(b.brand)) || list.find(b => /Chrome/.test(b.brand)) || list[0];
+      const chromium = (h.fullVersionList || []).find(b => /Chromium|Google Chrome/.test(b.brand));
+      if (pick) { out.name = pick.brand.replace("Microsoft ", "").replace("Google ", "").replace("HeadlessChrome", "Chrome"); out.full = pick.version; }
+      if (chromium) out.chromium = parseInt(chromium.version, 10);
+      if (!pick && chromium) { out.name = "Chromium-based browser"; out.full = chromium.version; }
+      out.engine = "chromium";
+      out.os = uad.platform || "";
+      if (out.os === "Windows" && h.platformVersion) out.osVersion = parseInt(h.platformVersion, 10) >= 13 ? "11" : "10";
+      if (out.os === "macOS") out.os = "macOS";
+    } catch (e) {}
+  }
+  if (!out.engine) {
+    let m;
+    if ((m = ua.match(/Firefox\/(\d+[\d.]*)/))) { out.name = "Firefox"; out.full = m[1]; out.engine = "gecko"; }
+    else if ((m = ua.match(/Edg\/(\d+[\d.]*)/))) { out.name = "Edge"; out.full = m[1]; out.engine = "chromium"; out.chromium = parseInt(m[1], 10); }
+    else if ((m = ua.match(/(?:Chrome|CriOS)\/(\d+[\d.]*)/))) { out.name = "Chrome"; out.full = m[1]; out.engine = "chromium"; out.chromium = parseInt(m[1], 10); }
+    else if ((m = ua.match(/Version\/(\d+[\d.]*).*Safari/))) { out.name = "Safari"; out.full = m[1]; out.engine = "webkit"; }
+    if (/Windows NT/.test(ua)) out.os = "Windows";
+    else if (/iPhone|iPad/.test(ua)) { out.os = "iOS"; const v = ua.match(/OS (\d+)_/); if (v) out.osVersion = v[1]; }
+    else if (/Mac OS X/.test(ua)) out.os = "macOS";
+    else if (/Android/.test(ua)) out.os = "Android";
+    else if (/Linux/.test(ua)) out.os = "Linux";
+  }
+  if (/CriOS|FxiOS|EdgiOS/.test(ua)) out.engine = "webkit";      // every iOS browser uses Safari's engine
+  out.major = parseInt(out.full, 10) || 0;
+  return out;
+}
+
+function checkVersion(b, v) {
+  const how = {
+    Chrome: "Menu ⋮ > Help > About Google Chrome. It updates and asks you to relaunch.",
+    Edge: "Menu … > Help and feedback > About Microsoft Edge.",
+    Brave: "Menu ≡ > About Brave.",
+    Opera: "Menu > Update & Recovery > Check for update.",
+    Vivaldi: "Menu > Help > Check for Updates.",
+    Firefox: "Menu ≡ > Help > About Firefox.",
+    Safari: "Safari updates with macOS or iOS: System Settings (or Settings) > General > Software Update."
+  }[b.name] || "Open your browser's menu, find About, and install any update it offers.";
+  if (b.engine === "chromium" && (b.chromium || b.major)) {
+    const have = b.chromium || b.major, want = v.chrome;
+    if (have >= want - 1) return ["ok", `${b.name} is up to date`, `Version ${b.full || have}, on the current Chromium release (${want}).`, ""];
+    if (have >= want - 3) return ["warn", `${b.name} is a little behind`, `You have version ${b.full || have}; the current release is based on Chromium ${want}. Recent security fixes may be missing.`, how];
+    return ["fail", `${b.name} is out of date`, `You have version ${b.full || have}; the current release is ${want}. Browsers this old have publicly known security holes.`, how];
+  }
+  if (b.engine === "gecko" && b.major) {
+    const want = v.firefox;
+    if (b.major >= want - 1) return ["ok", "Firefox is up to date", `Version ${b.full}, current release is ${want}.`, ""];
+    if (b.major >= want - 4) return ["warn", "Firefox is a little behind", `You have ${b.full}; the current release is ${want}. If you use Firefox ESR at work, this can be normal.`, how];
+    return ["fail", "Firefox is out of date", `You have ${b.full}; the current release is ${want}.`, how];
+  }
+  if (b.engine === "webkit" && b.name === "Safari" && b.major) {
+    if (b.major >= v.safari_min_supported) return ["ok", "Safari is a supported version", `Safari ${b.full}.`, ""];
+    return ["fail", "Safari is out of date", `Safari ${b.full} no longer gets security fixes, usually because the device's system is too old.`, how];
+  }
+  return ["info", "Couldn't confirm the browser version", "This browser doesn't say which version it is.", how];
+}
+
+function checkOS(b) {
+  if (b.os === "Windows" && b.osVersion === "10")
+    return ["warn", "Windows 10", "Windows 10 only gets security fixes through Extended Security Updates, until October 2027. Plan the move to Windows 11.", "Settings > Windows Update: make sure the PC is enrolled in Extended Security Updates."];
+  if (b.os === "Windows" && b.osVersion === "11") return ["ok", "Windows 11", "Your browser reports Windows 11.", ""];
+  if (b.os === "iOS" && b.osVersion) {
+    const n = parseInt(b.osVersion, 10);
+    if (n < 18) return ["fail", `iOS ${n} is out of date`, "Older iOS versions miss security fixes for Safari and every other app.", "Settings > General > Software Update."];
+    return ["ok", `iOS ${n}`, "A supported iOS version.", ""];
+  }
+  return null;
+}
+
+function webrtcLeak() {
+  return new Promise(resolve => {
+    if (!window.RTCPeerConnection) return resolve(["ok", "WebRTC is off", "This browser can't be asked for your local network address.", ""]);
+    const ips = new Set(); let done = false;
+    let pc;
+    const finish = () => {
+      if (done) return; done = true;
+      try { pc.close(); } catch (e) {}
+      const real = [...ips].filter(ip => /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|169\.254\.)/.test(ip) || /^[0-9a-f]{1,4}:/i.test(ip));
+      if (real.length) resolve(["warn", "Websites can see your local network address", `Any site can read ${real.length === 1 ? "the address" : "addresses"} ${real.slice(0, 2).join(", ")} through WebRTC. It helps sites fingerprint you and map your home network.`, "Firefox: set media.peerconnection.ice.default_address_only to true in about:config. Chrome/Edge: use the WebRTC Network Limiter extension, or Brave's built-in protection."]);
+      else resolve(["ok", "Your local network address is hidden", "WebRTC only gives sites an anonymous placeholder, not your real address.", ""]);
+    };
+    try {
+      pc = new RTCPeerConnection({iceServers: []});
+      pc.createDataChannel("x");
+      pc.onicecandidate = e => {
+        if (!e.candidate) return finish();
+        const m = e.candidate.candidate.match(/(\d+\.\d+\.\d+\.\d+|[0-9a-f]{1,4}(?::[0-9a-f]{0,4}){2,7})(?= \d+ typ)/i);
+        if (m) ips.add(m[1]);
+      };
+      pc.createOffer().then(o => pc.setLocalDescription(o)).catch(finish);
+      setTimeout(finish, 2500);
+    } catch (e) { finish(); }
+  });
+}
+
+function blockerCheck() {
+  return new Promise(resolve => {
+    const bait = document.createElement("div");
+    bait.className = "ad ads adsbox ad-banner ad-placement doubleclick sponsor-banner";
+    bait.style.cssText = "position:absolute;left:-9999px;top:-9999px;width:10px;height:10px;";
+    bait.innerHTML = "&nbsp;";
+    document.body.appendChild(bait);
+    setTimeout(() => {
+      const hidden = !bait.offsetParent || bait.offsetHeight === 0 || getComputedStyle(bait).display === "none";
+      bait.remove();
+      resolve(hidden
+        ? ["ok", "A tracker or ad blocker is active", "Blocking ads and trackers also blocks most 'malvertising', fake download buttons and scam pop-ups.", ""]
+        : ["warn", "No tracker or ad blocker detected", "Malicious ads and fake download buttons are a common way scams and malware reach people.", "Install uBlock Origin (Firefox, Edge) or use Brave's or Firefox's built-in tracking protection set to Strict."]);
+    }, 300);
+  });
+}
+
+function gpcCheck() {
+  if (navigator.globalPrivacyControl === true) return ["ok", "Global Privacy Control is on", "Your browser tells every site not to sell or share your data. In several US states and under GDPR, sites must honour it.", ""];
+  return ["info", "Global Privacy Control is off", "GPC is a signal that tells sites not to sell or share your personal data.", "Brave, DuckDuckGo and Firefox (Settings > Privacy > 'Tell websites not to sell or share my data') support it."];
+}
+
+async function fingerprint() {
+  const items = [];
+  const add = (k, v) => items.push([k, v]);
+  add("Language", (navigator.languages || [navigator.language]).slice(0, 3).join(", "));
+  try { add("Time zone", Intl.DateTimeFormat().resolvedOptions().timeZone); } catch (e) {}
+  add("Screen", `${screen.width}×${screen.height}, ${window.devicePixelRatio || 1}× scaling`);
+  if (navigator.hardwareConcurrency) add("Processor cores", navigator.hardwareConcurrency);
+  if (navigator.deviceMemory) add("Memory", `about ${navigator.deviceMemory} GB`);
+  let gpu = "";
+  try {
+    const gl = document.createElement("canvas").getContext("webgl");
+    const ext = gl && gl.getExtension("WEBGL_debug_renderer_info");
+    if (ext) gpu = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+  } catch (e) {}
+  if (gpu) add("Graphics card", gpu.replace(/ANGLE \(|\)$/g, "").slice(0, 80));
+  let canvasHash = "";
+  try {
+    const c = document.createElement("canvas"); c.width = 220; c.height = 30;
+    const x = c.getContext("2d"); x.textBaseline = "top"; x.font = "16px Arial"; x.fillStyle = "#f60"; x.fillRect(0, 0, 100, 20);
+    x.fillStyle = "#069"; x.fillText("SentySurf ✓ 2026", 4, 6);
+    const d = c.toDataURL();
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(d));
+    canvasHash = [...new Uint8Array(buf)].slice(0, 6).map(b => b.toString(16).padStart(2, "0")).join("");
+  } catch (e) {}
+  if (canvasHash) add("Canvas fingerprint", canvasHash);
+  const n = items.length;
+  const verdict = gpu && canvasHash
+    ? ["info", "Sites can fingerprint this browser", `Without cookies, a site can still combine ${n} details (below) into an ID that follows you. This is normal for most browsers.`, "Brave, Firefox (with Strict tracking protection) and Safari randomise or limit several of these details."]
+    : ["ok", "This browser limits fingerprinting", "Several of the details trackers rely on are hidden or randomised.", ""];
+  return [verdict, items];
+}
+
+function render(rows, facts) {
+  let score = 100;
+  for (const r of rows) score -= PENALTY[r[0]] || 0;
+  score = Math.max(0, Math.min(100, score));
+  const worst = rows.some(r => r[0] === "fail") ? "fail" : rows.some(r => r[0] === "warn") ? "warn" : "ok";
+  $("score").textContent = score;
+  const ring = $("ringbar"), C = 2 * Math.PI * 52;
+  ring.style.strokeDasharray = `${C}`;
+  ring.style.strokeDashoffset = `${C * (1 - score / 100)}`;
+  ring.setAttribute("data-level", worst);
+  $("verdict").textContent = {ok: "This browser looks good", warn: "A few things to improve", fail: "This browser needs attention"}[worst];
+  $("verdict-sub").textContent = {ok: "No problems a website can detect.", warn: "Nothing urgent, but these changes make you safer.", fail: "Fix the items marked 'Fix now' first."}[worst];
+  $("facts").innerHTML = facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+  const order = {fail: 0, warn: 1, info: 2, ok: 3};
+  $("results").innerHTML = rows.slice().sort((a, b) => order[a[0]] - order[b[0]]).map(([lvl, title, detail, fix, extra]) => `
+    <li class="bc-item" data-level="${lvl}">
+      <span class="bc-pill">${LABEL[lvl]}</span>
+      <div><h3>${esc(title)}</h3><p>${esc(detail)}</p>${fix ? `<p class="bc-fix"><b>How to fix</b>${esc(fix)}</p>` : ""}${extra || ""}</div>
+    </li>`).join("");
+  report = [`SentySurf browser check, ${new Date().toLocaleString()}`, `Score: ${score}/100`, ...facts.map(([k, v]) => `${k}: ${v}`), "",
+            ...rows.map(r => `[${LABEL[r[0]]}] ${r[1]} - ${r[2]}`)];
+}
+
+async function run() {
+  $("verdict").textContent = "Checking…"; $("score").textContent = "–"; $("results").innerHTML = "";
+  const [v, b] = await Promise.all([versions(), identify()]);
+  const rows = [checkVersion(b, v)];
+  const os = checkOS(b); if (os) rows.push(os);
+  if (location.protocol === "https:") rows.push(["ok", "Secure connection", "This page loaded over an encrypted HTTPS connection.", ""]);
+  const [leak, blocker, fp] = await Promise.all([webrtcLeak(), blockerCheck(), fingerprint()]);
+  rows.push(leak, blocker, gpcCheck());
+  const [fpRow, items] = fp;
+  fpRow[4] = `<dl class="bc-fp">${items.map(([k, val]) => `<dt>${esc(k)}</dt><dd class="mono">${esc(val)}</dd>`).join("")}</dl>`;
+  rows.push(fpRow);
+  if (navigator.cookieEnabled === false) rows.push(["info", "Cookies are blocked", "Some sites won't let you sign in.", ""]);
+  const facts = [["Browser", `${b.name}${b.full ? " " + b.full.split(".").slice(0, 2).join(".") : ""}`], ["System", [b.os, b.osVersion].filter(Boolean).join(" ") || "Unknown"],
+                 ["Checked", new Date().toLocaleTimeString([], {hour: "numeric", minute: "2-digit"})]];
+  render(rows, facts);
+}
+
+$("again").addEventListener("click", run);
+$("copy").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(report.join("\n")); $("copy").textContent = "Copied"; setTimeout(() => $("copy").textContent = "Copy report", 1600); }
+  catch (e) { $("copy").textContent = "Couldn't copy"; }
+});
+run();
+})();
+</script>
+</body>
+</html>

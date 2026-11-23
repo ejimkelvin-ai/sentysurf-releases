@@ -7,12 +7,12 @@
 <meta name="description" content="How SentySurf treats your privacy: what it reads, what it stores and the little it sends.">
 <link rel="icon" href="/favicon.ico">
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=8">
+<link rel="stylesheet" href="/style.css?v=9">
 </head>
 <body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-  <nav class="nav-links"><a href="/#capabilities" class="hide-sm">Capabilities</a><a href="/help">Help</a><a href="/privacy" class="hide-sm">Privacy</a><a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
+  <nav class="nav-links"><a href="/#capabilities" class="hide-sm">Capabilities</a><a href="/check">Browser check</a><a href="/help" class="hide-sm">Help</a><a href="/privacy" class="hide-sm">Privacy</a><a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
 </div></header>
 
 <main class="prose">
@@ -27,7 +27,7 @@
 
   <h2>What it stores</h2>
   <p>Its baseline (the known-good snapshot of your system), alert history, settings, scan results and the names you give devices on your network, in a
-    folder on your PC that only administrators can open (<code>C:\ProgramData\SentySurf</code>). Nothing is
+    folder on your PC that only administrators can open (<code>C:\ProgramData\SentySurf</code>), or in your user's Library folder on a Mac. Nothing is
     uploaded.</p>
 
   <h2>What it sends over the internet</h2>
@@ -45,6 +45,7 @@
     <li><b>Safety check</b>: links are checked on your PC and never opened or sent. Files are scanned by Microsoft
       Defender on your PC. “Look up on VirusTotal” opens your browser with the file's fingerprint (SHA-256) only,
       and only when you click it.</li>
+    <li><b>SIEM forwarding</b> (off unless you turn it on): alerts and scan results go only to the destinations you configure, such as your own syslog server or HTTPS collector. Nothing goes to SentySurf.</li>
     <li><b>Family mode</b> (only if you enable it): see below.</li>
   </ul>
 
@@ -62,6 +63,9 @@
     store or use it. No files, browsing, camera/microphone activity, serial numbers, user names or addresses are
     ever included.</p>
 
+  <h2>Browser check</h2>
+  <p>The <a href="/check">browser check</a> runs entirely in your browser. It reads details any website can read (browser version, language, screen size and so on) and shows them to you; it doesn't send them anywhere, store them or use cookies. The only request it makes is for a small file listing the current browser versions.</p>
+
   <h2>This website</h2>
   <p>sentysurf.com uses no cookies, analytics or trackers. The download buttons send you to the installer on
     GitHub, where SentySurf's releases are published.</p>
@@ -76,9 +80,9 @@
 
 <footer><div class="wrap">
   <div><a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-    <p class="fine">Host monitoring for Windows. Built to sit next to Microsoft Defender, not replace it.</p>
+    <p class="fine">Host monitoring for Windows and macOS. Built to sit next to your antivirus, not replace it.</p>
     <p class="fine">© 2026 SentySurf</p></div>
-  <div><h4>Product</h4><ul><li><a href="/#product">Dashboard</a></li><li><a href="/#capabilities">Capabilities</a></li><li><a href="/#family">Family</a></li><li><a href="/#download">Download</a></li></ul></div>
+  <div><h4>Product</h4><ul><li><a href="/#product">Dashboard</a></li><li><a href="/#capabilities">Capabilities</a></li><li><a href="/#family">Family</a></li><li><a href="/check">Browser check</a></li><li><a href="/#download">Download</a></li></ul></div>
   <div><h4>Support</h4><ul><li><a href="/help">Help</a></li><li><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></li><li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases">All releases</a></li></ul></div>
   <div><h4>Trust</h4><ul><li><a href="/privacy">Privacy</a></li><li><a href="/help#checksum">Verify a download</a></li></ul></div>
 </div></footer>

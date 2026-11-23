@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SentySurf | Endpoint monitoring for Windows</title>
+<title>SentySurf | Endpoint monitoring for Windows and Mac</title>
 <meta name="description" content="Host-based monitoring for Windows: remote-access detection, posture scoring, baseline drift alerts, patch management and a single view of every PC in your household. Free and read-only.">
 <meta property="og:title" content="SentySurf | Endpoint monitoring for Windows">
 <meta property="og:description" content="Remote-access detection, posture scoring and drift alerts for every Windows PC in your household.">
@@ -14,7 +14,7 @@
 <link rel="preload" as="image" type="image/webp" imagesrcset="/img/hero-1600.webp 1600w, /img/hero-2560.webp 2560w, /img/hero-3840.webp 3840w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=8">
+<link rel="stylesheet" href="/style.css?v=9">
 </head>
 <body>
 <header class="nav">
@@ -23,8 +23,8 @@
     <nav class="nav-links">
       <a href="#product" class="hide-sm">Product</a>
       <a href="#capabilities" class="hide-sm">Capabilities</a>
-      <a href="#family" class="hide-sm">Family</a>
-      <a href="/help">Help</a>
+      <a href="/check">Browser check</a>
+      <a href="/help" class="hide-sm">Help</a>
       <a class="btn btn-primary btn-sm" href="#download">Download</a>
     </nav>
   </div>
@@ -36,14 +36,14 @@
     <img src="/img/hero-2560.jpg" alt="" width="2560" height="1429" fetchpriority="high" decoding="async">
   </picture>
   <div class="wrap">
-    <p class="label"><b>SentySurf</b> Host monitoring for Windows 10 &amp; 11</p>
+    <p class="label"><b>SentySurf</b> Host monitoring for Windows and macOS</p>
     <h1>Watch what changes. <em>Catch what matters.</em></h1>
     <p class="lead">SentySurf records what your PC looks like when it's healthy, then tells you, in plain language,
       the moment that changes: a remote-control session, a new startup entry, a weakened setting, an app that's
       fallen behind on patches. Every finding comes with the fix.</p>
     <div class="cta">
       <a class="btn btn-primary" href="/download" data-dl><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span data-dl-label>Download for Windows</span></a>
-      <a class="btn btn-ghost" href="#product">See the dashboard</a>
+      <a class="btn btn-ghost" href="/check">Check this browser</a>
     </div>
     <dl class="readout" aria-label="Example status">
       <dt>watch</dt><dd class="live">running · checks every 5 s</dd>
@@ -102,6 +102,12 @@
         <li><span class="n">10</span><div><h3>Files before you open</h3><p>Disguised extensions, macros and broken signatures, plus a Microsoft Defender scan.</p></div></li>
         <li><span class="n">11</span><div><h3>Browser extensions</h3><p>A 0–100 risk score per extension, permissions in plain language, policy-forced installs caught.</p></div></li>
         <li><span class="n">12</span><div><h3>Camera &amp; microphone</h3><p>Each app that turns them on, straight from Windows' own access records.</p></div></li>
+      </ol></div>
+      <div><h3 class="group">Connect</h3><ol>
+        <li><span class="n">13</span><div><h3>SIEM forwarding</h3><p>Alerts and scan results to Splunk, Sentinel, Elastic, QRadar or Wazuh: Event Log, syslog with CEF, HTTPS or JSON.</p></div></li>
+        <li><span class="n">14</span><div><h3>Family console</h3><p>Every PC you look after on one screen, end-to-end encrypted with a family code.</p></div></li>
+        <li><span class="n">15</span><div><h3>macOS</h3><p>FileVault, Gatekeeper, SIP, XProtect, sharing services and unsupported macOS versions.</p></div></li>
+        <li><span class="n">16</span><div><h3>Browser check</h3><p>A free web check of any browser's version, WebRTC exposure, tracker blocking and fingerprint. <a href="/check">Try it</a></p></div></li>
       </ol></div>
     </div>
   </div>
@@ -193,12 +199,14 @@
     <div>
       <p class="label"><b>09</b> Download</p>
       <h2>Get SentySurf.</h2>
-      <p class="meta" data-dl-version>Free for Windows 10 (1809 or later) and Windows 11</p>
+      <p class="meta" data-dl-version>Free for Windows and macOS</p>
       <a class="btn btn-primary" href="/download" data-dl><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span data-dl-label>Download for Windows</span></a>
       <p class="alt-dl" data-dl-alt>Snapdragon or other ARM-based PC? <a href="/download/arm64">Download the ARM64 build</a>.</p>
+      <p class="alt-dl mac-dl">On a Mac? <a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-macOS-AppleSilicon.dmg" data-mac>Download for Apple silicon</a> · <a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest/download/SentySurf-macOS-Intel.dmg">Intel Mac</a></p>
     </div>
     <dl class="specs">
-      <dt>Systems</dt><dd>Windows 10 1809+ and Windows 11, x64 and ARM64. S mode isn't supported.</dd>
+      <dt>Windows</dt><dd>Windows 10 1809+ and Windows 11, x64 and ARM64. S mode isn't supported.</dd>
+      <dt>Mac</dt><dd>macOS 12 or later, Apple silicon and Intel. <a href="/help#mac">First launch on a Mac</a></dd>
       <dt>Updates</dt><dd>Checked every 6 hours, verified against a published SHA-256 checksum, installed automatically.</dd>
       <dt>Account</dt><dd>None. Nothing to sign up for, nothing to sync.</dd>
       <dt>Privacy</dt><dd>No analytics or tracking. <a href="/privacy">What leaves your PC</a></dd>
@@ -210,9 +218,9 @@
 <footer>
   <div class="wrap">
     <div><a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-      <p class="fine">Host monitoring for Windows. Built to sit next to Microsoft Defender, not replace it.</p>
+      <p class="fine">Host monitoring for Windows and macOS. Built to sit next to your antivirus, not replace it.</p>
       <p class="fine">© <span data-year>2026</span> SentySurf</p></div>
-    <div><h4>Product</h4><ul><li><a href="#product">Dashboard</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#family">Family</a></li><li><a href="#download">Download</a></li></ul></div>
+    <div><h4>Product</h4><ul><li><a href="#product">Dashboard</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#family">Family</a></li><li><a href="/check">Browser check</a></li><li><a href="#download">Download</a></li></ul></div>
     <div><h4>Support</h4><ul><li><a href="/help">Help</a></li><li><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></li><li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases">All releases</a></li></ul></div>
     <div><h4>Trust</h4><ul><li><a href="/privacy">Privacy</a></li><li><a href="/help#checksum">Verify a download</a></li></ul></div>
   </div>
@@ -232,9 +240,10 @@
   let info = null;
   try { info = await (await fetch("/api/latest", {cache: "no-store"})).json(); } catch (e) {}
   const mb = b => b ? ` · ${(b / 1048576).toFixed(0)} MB` : "";
-  document.querySelectorAll("[data-dl]").forEach(a => a.href = arm ? "/download/arm64" : "/download");
+  const mac = /Macintosh|Mac OS X/.test(navigator.userAgent) && !("ontouchend" in document);
+  document.querySelectorAll("[data-dl]").forEach(a => a.href = mac ? document.querySelector("[data-mac]").href : arm ? "/download/arm64" : "/download");
   document.querySelectorAll("[data-dl-label]").forEach(s =>
-    s.textContent = arm ? "Download for Windows on ARM" : "Download for Windows");
+    s.textContent = mac ? "Download for Mac" : arm ? "Download for Windows on ARM" : "Download for Windows");
   if (info && info.version) {
     const asset = arm ? info.arm64 : info.x64;
     document.querySelectorAll("[data-dl-version]").forEach(e =>
@@ -244,8 +253,9 @@
   }
   document.querySelectorAll("[data-dl-alt]").forEach(e => {
     if (arm) e.innerHTML = 'Not on ARM? <a href="/download/x64">Download the x64 build</a>.';
-    if (!windows) e.innerHTML = 'SentySurf runs on Windows. Open this page on the PC you want to monitor, or download the ' +
-      '<a href="/download/x64">x64</a> or <a href="/download/arm64">ARM64</a> build.';
+    if (mac) e.innerHTML = 'Using Windows? <a href="/download/x64">Download for Windows</a>.';
+    else if (!windows) e.innerHTML = 'Open this page on the computer you want to monitor, or download for ' +
+      '<a href="/download/x64">Windows</a> or <a href="' + document.querySelector("[data-mac]").href + '">Mac</a>.';
   });
 })();
 </script>
