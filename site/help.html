@@ -6,13 +6,13 @@
 <title>Help | SentySurf</title>
 <meta name="description" content="Installing SentySurf, which download to choose, what to do if Windows blocks it, and setting up Family mode.">
 <link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style.css?v=7">
+<link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=8">
 </head>
 <body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-  <nav class="nav-links"><a href="/#features">Features</a><a href="/privacy">Privacy</a>
-    <a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
+  <nav class="nav-links"><a href="/#capabilities" class="hide-sm">Capabilities</a><a href="/help">Help</a><a href="/privacy" class="hide-sm">Privacy</a><a class="btn btn-primary btn-sm" href="/#download">Download</a></nav>
 </div></header>
 
 <main class="prose">
@@ -48,7 +48,7 @@
   <p>Some antivirus products wrongly flag new, unsigned apps. Check the file's fingerprint (below), then restore
     it or add an exception.</p>
 
-  <h2>Check your download</h2>
+  <h2 id="checksum">Check your download</h2>
   <p>Every release includes <code>SHA256SUMS.txt</code> on the
     <a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases/latest">release page</a>. In PowerShell,
     in the folder with the download:</p>
@@ -85,9 +85,12 @@
 </main>
 
 <footer><div class="wrap">
-  <a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
-  <span>© 2026 SentySurf</span>
-  <nav><a href="/help">Help</a><a href="/privacy">Privacy</a><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></nav>
+  <div><a class="brand" href="/"><img src="/logo.png" alt="">SentySurf</a>
+    <p class="fine">Host monitoring for Windows. Built to sit next to Microsoft Defender, not replace it.</p>
+    <p class="fine">© 2026 SentySurf</p></div>
+  <div><h4>Product</h4><ul><li><a href="/#product">Dashboard</a></li><li><a href="/#capabilities">Capabilities</a></li><li><a href="/#family">Family</a></li><li><a href="/#download">Download</a></li></ul></div>
+  <div><h4>Support</h4><ul><li><a href="/help">Help</a></li><li><a href="mailto:support@sentysurf.com">support@sentysurf.com</a></li><li><a href="https://github.com/ejimkelvin-ai/sentysurf-releases/releases">All releases</a></li></ul></div>
+  <div><h4>Trust</h4><ul><li><a href="/privacy">Privacy</a></li><li><a href="/help#checksum">Verify a download</a></li></ul></div>
 </div></footer>
 </body>
 </html>
