@@ -71,7 +71,7 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
 const PENALTY = {fail: 30, warn: 12, info: 0, ok: 0};
 const LABEL = {ok: "Good", warn: "Improve", fail: "Fix now", info: "Note"};
-const FALLBACK = {chrome: 157, firefox: 160, safari: 27, safari_min_supported: 26};
+const FALLBACK = {chrome: 158, firefox: 161, safari: 27, safari_min_supported: 26};
 let report = [];
 
 async function versions() {

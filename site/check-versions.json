@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-22",
+  "updated": "2026-11-24",
   "note": "Current stable major versions. Updated by the weekly SentySurf maintenance task.",
-  "chrome": 157,
-  "firefox": 160,
+  "chrome": 158,
+  "firefox": 161,
   "safari": 27,
   "safari_min_supported": 26
 }
